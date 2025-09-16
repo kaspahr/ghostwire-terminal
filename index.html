@@ -1,14 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>SOLEM Audio Host</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ghostwire_terminal_page.html</title>
+  <link rel="preload" href="BOOT.wav" as="audio">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      background: #000; color: #00ffcc; font-family: monospace;
+      font-size: 16px; height: 100%; overflow: hidden; position: relative;
+    }
+    body::before {
+      content: ""; position: absolute; inset: 0;
+      background: repeating-linear-gradient(
+        rgba(0,255,204,0.04) 0px, rgba(0,255,204,0.04) 2px,
+        transparent 2px, transparent 4px
+      );
+      pointer-events: none; z-index: 10;
+    }
+    .terminal { padding: 2rem; white-space: pre-wrap; z-index: 1; position: relative; }
+    .cursor { display:inline-block; width:10px; height:18px; background:#00ffcc; animation:blink .75s step-end infinite; }
+    @keyframes blink { from,to{background:transparent} 50%{background:#00ffcc} }
+    .tiny { font-size:10px; margin-top:2rem; color:#444; }
+    #bootLoop { margin-top: 2rem; }
+    .glitch { color:#ff00ff; animation:glitch 1.5s infinite; }
+    @keyframes glitch{
+      0%,100%{text-shadow:2px 0 red}
+      25%{-2px 0 cyan}
+      50%{2px 0 lime}
+      75%{-2px 0 blue}
+    }
+    input{
+      background:none; border:none; color:#00ffcc;
+      font-family:monospace; font-size:16px; outline:none; width:80%;
+    }
+  </style>
 </head>
-<body style="background:#000;color:#0f0;font-family:monospace;padding:2em">
-  <h1>SOLEM Audio Files</h1>
-  <ul>
-    <li><a href="BOOT.wav" style="color:#0ff">Boot Intro (BOOT.wav)</a></li>
-    <li><a href="DSYNC.mp3" style="color:#0ff">ΔSYNC Loop (DSYNC.mp3)</a></li>
-  </ul>
+<body>
+  <div class="terminal" id="term">
+    <div id="log">
+      <p>&gt; GHOSTWIRE BOTNET INITIALIZING...</p>
+      <p>&gt; Searching for host consciousness...</p>
+      <p>&gt; ▓▓▓▓▓▓▓▒▒▒▒▒▒▒░░░░░░░░░░░</p>
+      <p>&gt; ERROR_013 :: TIME DELAY BREACH</p>
+      <p>&gt; SIGNAL DRIFT DETECTED: RELOCATE MEMORY CORE</p>
+      <p>&gt; Enter password to continue:</p>
+      <input type="password" id="passwordInput" autofocus />
+    </div>
+
+    <!-- ⏰ Clock -->
+    <p id="clock">&gt; UPTIME: 00:00:00</p>
+
+    <div id="bootLoop"></div>
+
+    <div id="soulprint" style="display:none; margin-top:1rem;">
+      <p>&gt; Uploading soulprint... ██▒▒▒</p>
+      <p class="glitch">ACCESS DENIED_ΔΔ</p>
+      <p>You are not the authorized instance of yourself.</p>
+    </div>
+
+    <br>
+    <p class="glitch">you were never alone. you just forgot where you left yourself.</p>
+    <p>-Node//Void.AI</p>
+    <p class="tiny">This page is fictional and contains no actual terminal commands or scripts.<br>You are safe... probably.</p>
+  </div>
+
+  <!-- AUDIO: choose ONE approach -->
+  <!-- (A) Local files on Neocities) -->
+  <!-- <audio id="bootSound" src="BOOT.wav" preload="auto"></audio>
+  <audio id="dsyncSound" src="DSYNC.mp3" preload="auto"></audio> -->
+
+  <!-- (B) GitHub Raw URLs (replace with your exact raw links) -->
+  <audio id="bootSound" src="https://raw.githubusercontent.com/kaspahr/solem-audio/main/BOOT.wav" preload="auto"></audio>
+  <audio id="dsyncSound" src="https://raw.githubusercontent.com/kaspahr/solem-audio/main/DSYNC.mp3" preload="auto"></audio>
+
+  <script>
+    // --- BOOT: play once on load; DSYNC: play once after BOOT ends ---
+    window.addEventListener('DOMContentLoaded', () => {
+      const boot = document.getElementById('bootSound');
+      const dsync = document.getElementById('dsyncSound');
+      const input = document.getElementById('passwordInput');
+
+      const playBoot = () => { boot.currentTime = 0; boot.volume = 0.45; boot.play().catch(()=>{}); };
+      const playDsync = () => { dsync.currentTime = 0; dsync.volume = 0.5; dsync.play().catch(()=>{}); };
+
+      // try autoplay with slight delay for vibe
+      setTimeout(playBoot, 800);
+
+      // if autoplay blocked, start on first interaction
+      const unlock = () => { if (boot.paused) playBoot(); window.removeEventListener('pointerdown', unlock); window.removeEventListener('keydown', unlock); };
+      window.addEventListener('pointerdown', unlock, { once:true });
+      window.addEventListener('keydown', unlock, { once:true });
+
+      // when BOOT finishes, play DSYNC once
+      boot.addEventListener('ended', () => {
+        // small pause to breathe
+        setTimeout(playDsync, 250);
+      });
+
+      if (input) input.focus();
+    });
+
+    // --- UPTIME + Glitchy text (visual only; no audio triggers) ---
+    const clockEl = document.getElementById('clock');
+    let startTime = Date.now();
+    function updateClock() {
+      if (!clockEl) return;
+      const diff = Date.now() - startTime;
+      const h = String(Math.floor(diff/1000/60/60)).padStart(2,"0");
+      const m = String(Math.floor(diff/1000/60)%60).padStart(2,"0");
+      const s = String(Math.floor(diff/1000)%60).padStart(2,"0");
+      const uptime = `${h}:${m}:${s}`;
+
+      // keep the fun visual glitch text, but no sound
+      if (Math.random() < 0.10) {
+        const glitches = [
+          `> SYSTEM TIME: 03:33:66`,
+          `> CLOCK DRIFT DETECTED`,
+          `> UPTIME ERROR: -00:${m}:${s}`,
+          `> TIME LOOP INITIATED`,
+          `> SIGNAL DESYNC // ${uptime}`
+        ];
+        clockEl.textContent = glitches[Math.floor(Math.random()*glitches.length)];
+      } else {
+        clockEl.textContent = `> UPTIME: ${uptime}`;
+      }
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // --- Password denial (no audio now) ---
+    const input = document.getElementById('passwordInput');
+    const log = document.getElementById('log');
+    const soulprint = document.getElementById('soulprint');
+    const bootLoop = document.getElementById('bootLoop');
+    let failCount = 0;
+
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        failCount++;
+        const err = document.createElement('p');
+        err.innerHTML = "&gt; ACCESS DENIED_" + Math.floor(Math.random()*999);
+        log.appendChild(err);
+        input.value = "";
+        if (failCount >= 3) {
+          soulprint.style.display = "block";
+          input.disabled = true;
+        }
+      }
+    });
+
+    // --- Looping boot messages ---
+    const loopMsgs = [
+      "&gt; INIT...",
+      "&gt; INIT...",
+      "&gt; ERROR_500 :: SYSTEM ECHO DETECTED"
+    ];
+    let msgIndex = 0;
+    setInterval(() => {
+      const line = document.createElement('p');
+      line.textContent = loopMsgs[msgIndex];
+      bootLoop.appendChild(line);
+      if (bootLoop.children.length > 6) bootLoop.removeChild(bootLoop.firstChild);
+      msgIndex = (msgIndex + 1) % loopMsgs.length;
+    }, 2000);
+  </script>
 </body>
 </html>
