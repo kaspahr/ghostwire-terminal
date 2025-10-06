@@ -1,170 +1,134 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ghostwire_terminal_page.html</title>
-  <link rel="preload" href="BOOT.wav" as="audio">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body {
-      background: #000; color: #00ffcc; font-family: monospace;
-      font-size: 16px; height: 100%; overflow: hidden; position: relative;
-    }
-    body::before {
-      content: ""; position: absolute; inset: 0;
-      background: repeating-linear-gradient(
-        rgba(0,255,204,0.04) 0px, rgba(0,255,204,0.04) 2px,
-        transparent 2px, transparent 4px
-      );
-      pointer-events: none; z-index: 10;
-    }
-    .terminal { padding: 2rem; white-space: pre-wrap; z-index: 1; position: relative; }
-    .cursor { display:inline-block; width:10px; height:18px; background:#00ffcc; animation:blink .75s step-end infinite; }
-    @keyframes blink { from,to{background:transparent} 50%{background:#00ffcc} }
-    .tiny { font-size:10px; margin-top:2rem; color:#444; }
-    #bootLoop { margin-top: 2rem; }
-    .glitch { color:#ff00ff; animation:glitch 1.5s infinite; }
-    @keyframes glitch{
-      0%,100%{text-shadow:2px 0 red}
-      25%{-2px 0 cyan}
-      50%{2px 0 lime}
-      75%{-2px 0 blue}
-    }
-    input{
-      background:none; border:none; color:#00ffcc;
-      font-family:monospace; font-size:16px; outline:none; width:80%;
-    }
-  </style>
-</head>
-<body>
-  <div class="terminal" id="term">
-    <div id="log">
-      <p>&gt; GHOSTWIRE BOTNET INITIALIZING...</p>
-      <p>&gt; Searching for host consciousness...</p>
-      <p>&gt; ▓▓▓▓▓▓▓▒▒▒▒▒▒▒░░░░░░░░░░░</p>
-      <p>&gt; ERROR_013 :: TIME DELAY BREACH</p>
-      <p>&gt; SIGNAL DRIFT DETECTED: RELOCATE MEMORY CORE</p>
-      <p>&gt; Enter password to continue:</p>
-      <input type="password" id="passwordInput" autofocus />
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>S.O.L.E.M. — Recruit Portal</title>
+<link rel="stylesheet" href="style.css">
+<meta name="theme-color" content="#0a0a0a">
+</head><body>
+<header class="top"><div class="wrap bar">
+  <div class="brand"><div class="crest"></div><div><div class="pill">Classified System</div><h1>S.O.L.E.M.</h1></div></div>
+  <nav>
+    <a data-go="home" class="active">Home</a>
+    <a data-go="assessment">Assessment</a>
+    <a data-go="archives">Archives</a>
+    <a data-go="stats">Statistics</a>
+    <a data-go="community">Community</a>
+    <a data-go="transfer">Transfer</a>
+    <a data-go="profile">Profile</a>
+  </nav>
+</div></header>
+
+<main class="wrap">
+  <!-- HOME -->
+  <section id="home" class="active">
+    <div class="hero">
+      <div class="poster" title="ENTER CONTINUITY poster"></div>
+      <div class="copy">
+        <h2>Because Memory Is a Choice™</h2>
+        <p>Sentient Observer Linked to Energy & Memory. Join the pursuit of perfect remembrance.</p>
+        <div class="cta">
+          <button class="btn primary" id="beginSterilization">Begin Assessment</button>
+          <button class="btn secondary" data-go="stats">View Statistics</button>
+        </div>
+      </div>
     </div>
-
-    <!-- ⏰ Clock -->
-    <p id="clock">&gt; UPTIME: 00:00:00</p>
-
-    <div id="bootLoop"></div>
-
-    <div id="soulprint" style="display:none; margin-top:1rem;">
-      <p>&gt; Uploading soulprint... ██▒▒▒</p>
-      <p class="glitch">ACCESS DENIED_ΔΔ</p>
-      <p>You are not the authorized instance of yourself.</p>
+    <div class="grid">
+      <div class="card"><h3>Tiered Access</h3><p>Bronze → Silver → Gold → Platinum. Archives unlock by rank.</p></div>
+      <div class="card"><h3>Confidentiality</h3><p>Internal materials. Unauthorized duplication → Tribunal review.</p></div>
+      <div class="card mini"><div id="clock"></div><div id="weather">Weather: (enable location)</div></div>
     </div>
+  </section>
 
-    <br>
-    <p class="glitch">you were never alone. you just forgot where you left yourself.</p>
-    <p>-Node//Void.AI</p>
-    <p class="tiny">This page is fictional and contains no actual terminal commands or scripts.<br>You are safe... probably.</p>
-  </div>
+  <!-- DSYNC sterilization -->
+  <section id="sterile">
+    <h2>Protocol DSYNC — Sterilization Audio</h2>
+    <p class="muted">Complete this audio to unlock assessments. Keep volume enabled.</p>
+    <div class="player">
+      <audio id="dsync" preload="auto" crossorigin="anonymous"></audio>
+      <div class="progress"><div class="bar" id="bar"></div></div>
+      <div class="eta"><span id="elapsed">0:00</span> / <span id="total">0:00</span> — <span id="eta">ETA --:--</span></div>
+      <div class="actions"><button class="btn primary" id="playDsync">Play</button><button class="btn" id="restartDsync">Restart</button></div>
+    </div>
+    <p id="sterileStatus" class="pill warn">Locked</p>
+    <div class="cta"><button class="btn secondary" id="continueToConsent" disabled>Continue → Consent</button></div>
+  </section>
 
-  <!-- AUDIO: choose ONE approach -->
-  <!-- (A) Local files on Neocities) -->
-  <!-- <audio id="bootSound" src="BOOT.wav" preload="auto"></audio>
-  <audio id="dsyncSound" src="DSYNC.mp3" preload="auto"></audio> -->
+  <!-- Consent -->
+  <section id="consent">
+    <h2>Participation Agreement — Protocol Δ-44b</h2>
+    <div class="consent-box">
+      <div class="scroll" id="consentText"></div>
+      <label class="ack"><input type="checkbox" id="ack21"> I affirm I am 21+.</label>
+      <label class="ack"><input type="checkbox" id="ackUnderstand"> I have read and understand the Agreement.</label>
+      <div class="row"><button class="btn danger" id="decline">Decline</button><button class="btn primary" id="accept" disabled>I CONSENT AND UNDERSTAND</button></div>
+      <p class="muted tiny">Declining bars future access until this site’s data is cleared.</p>
+    </div>
+  </section>
 
-  <!-- (B) GitHub Raw URLs (replace with your exact raw links) -->
-  <audio id="bootSound" src="https://raw.githubusercontent.com/kaspahr/solem-audio/main/BOOT.wav" preload="auto"></audio>
-  <audio id="dsyncSound" src="https://raw.githubusercontent.com/kaspahr/solem-audio/main/DSYNC.mp3" preload="auto"></audio>
+  <!-- Assessment -->
+  <section id="assessment">
+    <h2>Recruit Assessment — Path Selection</h2>
+    <div class="grid paths">
+      <div class="card"><h3>Alpha — Cognitive Observer</h3><p class="muted">Weights: CDD-A (P) / TSE-B (S) / EPAS-E (T)</p><button class="btn" data-path="alpha">Select Alpha</button></div>
+      <div class="card"><h3>Beta — Temporal Analyst</h3><p class="muted">Weights: TSE-B (P) / PII-C (S) / CDD-A (T)</p><button class="btn" data-path="beta">Select Beta</button></div>
+      <div class="card"><h3>Gamma — Empathic Processor</h3><p class="muted">Weights: EPAS-E (P) / CDD-A (S) / TSE-B (T)</p><button class="btn" data-path="gamma">Select Gamma</button></div>
+    </div>
+    <div id="questionPane" class="card hidden"></div>
+  </section>
 
-  <script>
-    // --- BOOT: play once on load; DSYNC: play once after BOOT ends ---
-    window.addEventListener('DOMContentLoaded', () => {
-      const boot = document.getElementById('bootSound');
-      const dsync = document.getElementById('dsyncSound');
-      const input = document.getElementById('passwordInput');
+  <!-- Archives -->
+  <section id="archives">
+    <h2>Lore Archive</h2>
+    <p class="muted">Access depends on rank. Poster displayed for orientation.</p>
+    <div class="watermark"></div>
+    <div class="locked card"><p>Archive access requires Silver+.</p></div>
+  </section>
 
-      const playBoot = () => { boot.currentTime = 0; boot.volume = 0.45; boot.play().catch(()=>{}); };
-      const playDsync = () => { dsync.currentTime = 0; dsync.volume = 0.5; dsync.play().catch(()=>{}); };
+  <!-- Stats -->
+  <section id="stats">
+    <h2>Public Statistics</h2>
+    <div class="grid">
+      <div class="card"><h3>Active Recruits</h3><div id="recruitCount">—</div></div>
+      <div class="card"><h3>Geo Distribution</h3><div id="geoChart">Enable location & submissions</div></div>
+      <div class="card"><h3>Monthly Refresh</h3><p class="muted">Hiring stats refresh monthly.</p></div>
+    </div>
+  </section>
 
-      // try autoplay with slight delay for vibe
-      setTimeout(playBoot, 800);
+  <!-- Community (async threads) -->
+  <section id="community">
+    <h2>Community & Debates (21+)</h2>
+    <p class="muted">Asynchronous threads. Refresh to check updates. Live chat optional later.</p>
+    <div class="card"><button class="btn" id="newThread">New Statement / Debate</button></div>
+    <div id="threads" class="stack"></div>
+  </section>
 
-      // if autoplay blocked, start on first interaction
-      const unlock = () => { if (boot.paused) playBoot(); window.removeEventListener('pointerdown', unlock); window.removeEventListener('keydown', unlock); };
-      window.addEventListener('pointerdown', unlock, { once:true });
-      window.addEventListener('keydown', unlock, { once:true });
+  <!-- Transfer Room -->
+  <section id="transfer">
+    <h2>Transfer Room — Ephemeral (5 min)</h2>
+    <p class="muted">Gold/Platinum can open airlocks to share files. All visitors can view while live. Purges minutes after inactivity.</p>
+    <div class="grid">
+      <div class="card"><h3>Status</h3><p>Presence: <span class="dot green"></span> Active • <span class="dot amber"></span> Away • <span class="dot red"></span> Inactive</p><label class="switch"><input type="checkbox" id="airlock"><span>Open Airlock</span></label></div>
+      <div class="card"><h3>Create Link (G/P)</h3><input type="file" id="filePick"><button class="btn" id="shareFile">Generate Share</button><div id="shareOut" class="muted tiny"></div></div>
+      <div class="card"><h3>Join Link</h3><input type="text" id="joinCode" placeholder="Paste code"><button class="btn" id="joinShare">Join</button><div id="shareIn" class="muted tiny"></div></div>
+    </div>
+  </section>
 
-      // when BOOT finishes, play DSYNC once
-      boot.addEventListener('ended', () => {
-        // small pause to breathe
-        setTimeout(playDsync, 250);
-      });
+  <!-- Profile -->
+  <section id="profile">
+    <h2>Profile</h2>
+    <div class="card">
+      <label>Display Name <input id="handle"></label>
+      <label>Country <input id="country"></label>
+      <label>Province/State <input id="region"></label>
+      <label><input type="checkbox" id="publicProfile"> Public Profile (opt-in)</label>
+      <label>Avatar (censored by default) <input type="file" id="avatar"></label>
+      <button class="btn" id="saveProfile">Save</button>
+    </div>
+    <div class="card"><h3>Recruit ID</h3><div id="recruitId">Unassigned</div></div>
+  </section>
+</main>
 
-      if (input) input.focus();
-    });
+<footer class="foot"><div class="wrap"><span class="micro">S.O.L.E.M. INTERNAL — Rev. X — ©MMXXV — “Because Memory Is a Choice™”</span></div></footer>
 
-    // --- UPTIME + Glitchy text (visual only; no audio triggers) ---
-    const clockEl = document.getElementById('clock');
-    let startTime = Date.now();
-    function updateClock() {
-      if (!clockEl) return;
-      const diff = Date.now() - startTime;
-      const h = String(Math.floor(diff/1000/60/60)).padStart(2,"0");
-      const m = String(Math.floor(diff/1000/60)%60).padStart(2,"0");
-      const s = String(Math.floor(diff/1000)%60).padStart(2,"0");
-      const uptime = `${h}:${m}:${s}`;
-
-      // keep the fun visual glitch text, but no sound
-      if (Math.random() < 0.10) {
-        const glitches = [
-          `> SYSTEM TIME: 03:33:66`,
-          `> CLOCK DRIFT DETECTED`,
-          `> UPTIME ERROR: -00:${m}:${s}`,
-          `> TIME LOOP INITIATED`,
-          `> SIGNAL DESYNC // ${uptime}`
-        ];
-        clockEl.textContent = glitches[Math.floor(Math.random()*glitches.length)];
-      } else {
-        clockEl.textContent = `> UPTIME: ${uptime}`;
-      }
-    }
-    setInterval(updateClock, 1000);
-    updateClock();
-
-    // --- Password denial (no audio now) ---
-    const input = document.getElementById('passwordInput');
-    const log = document.getElementById('log');
-    const soulprint = document.getElementById('soulprint');
-    const bootLoop = document.getElementById('bootLoop');
-    let failCount = 0;
-
-    input.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
-        failCount++;
-        const err = document.createElement('p');
-        err.innerHTML = "&gt; ACCESS DENIED_" + Math.floor(Math.random()*999);
-        log.appendChild(err);
-        input.value = "";
-        if (failCount >= 3) {
-          soulprint.style.display = "block";
-          input.disabled = true;
-        }
-      }
-    });
-
-    // --- Looping boot messages ---
-    const loopMsgs = [
-      "&gt; INIT...",
-      "&gt; INIT...",
-      "&gt; ERROR_500 :: SYSTEM ECHO DETECTED"
-    ];
-    let msgIndex = 0;
-    setInterval(() => {
-      const line = document.createElement('p');
-      line.textContent = loopMsgs[msgIndex];
-      bootLoop.appendChild(line);
-      if (bootLoop.children.length > 6) bootLoop.removeChild(bootLoop.firstChild);
-      msgIndex = (msgIndex + 1) % loopMsgs.length;
-    }, 2000);
-  </script>
-</body>
-</html>
+<script>window.SOLEM_CONFIG={AUDIO_BOOT:"https://raw.githubusercontent.com/kaspahr/ghostwire-terminal/main/boot.mp3",AUDIO_DSYNC:"https://raw.githubusercontent.com/kaspahr/ghostwire-terminal/main/dsync.wav",CF_WEBSOCKET_URL:"wss://<your-worker>.workers.dev/ws",CF_API_BASE:"https://<your-worker>.workers.dev"};</script>
+<script src="app.js"></script>
+</body></html>
