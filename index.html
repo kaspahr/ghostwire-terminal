@@ -1,101 +1,159 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>S.O.L.E.M. — Recruit Portal (Static Mock)</title>
-<meta name="theme-color" content="#0a0a0a">
-<meta name="description" content="A self-contained, GitHub Pages–friendly static mock that looks functional but has no backend.">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>S.O.L.E.M. — Recruit Portal</title>
+<meta name="theme-color" content="#0a0a0a" />
+<meta name="description" content="S.O.L.E.M. Recruit Portal — amber/black static mock for GitHub Pages." />
+
 <style>
   :root{
-    --bg:#000; --fg:#a8ff60; --mut:#86b986; --grid:#0f2b0f; --card:#0a0d0a; --accent:#b6f4ff; --danger:#ff4d4d; --amber:#ffd166;
+    --bg:#0a0a0a; --ink:#e9edf5; --mut:#9aa3b2; --line:#1c1f26;
+    --panel:#0c0c0e; --panel-2:#0e0f13;
+    --amber:#ffb347; --amber-2:#ff9a2b; --emerald:#2ee086;
+    --nav:#0d1017; --nav-line:#283244; --nav-ink:#c9d3e3;
+    --glowA:0 0 .8rem rgba(255,179,71,.25), 0 0 3rem rgba(255,179,71,.08);
   }
   *{box-sizing:border-box}
   html,body{height:100%}
-  body{margin:0;background:var(--bg);color:var(--fg);font-family:ui-monospace,Menlo,Monaco,"Courier New",monospace}
-  body::before{content:"";position:fixed;inset:0;pointer-events:none;background:repeating-linear-gradient( to bottom, rgba(255,255,255,.03), rgba(0,0,0,0) 2px, rgba(0,0,0,0) 3px );mix-blend-mode:overlay;opacity:.25}
-  body::after{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse at center, rgba(0,0,0,0) 0%, rgba(0,0,0,.35) 70%, rgba(0,0,0,.85) 100%)}
-  a{color:var(--accent);text-decoration:none}
+  body{
+    margin:0; color:#dfe4ee;
+    font-family:ui-monospace, Menlo, Monaco, "Courier New", monospace;
+    background:
+      radial-gradient(1200px 600px at 50% -10%, #0f1220 0%, #0b0d14 40%, #08090c 70%, #070707 100%);
+  }
+  /* subtle CRT vibe */
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.25;
+    background:repeating-linear-gradient(to bottom, rgba(255,255,255,.03), transparent 2px, transparent 3px);
+    mix-blend-mode:overlay;
+  }
+
   .wrap{max-width:1200px;margin:0 auto;padding:16px}
-  header.top{position:sticky;top:0;background:#020502e6;border-bottom:1px solid var(--grid);backdrop-filter:blur(4px);z-index:5}
-  .bar{display:flex;align-items:center;gap:16px;justify-content:space-between}
-  .brand{display:flex;align-items:center;gap:10px}
-  .brand .crest{width:22px;height:22px;border:2px solid var(--fg);border-radius:50%;box-shadow:0 0 10px rgba(168,255,96,.4) inset}
-  .pill{font-size:.72rem;border:1px solid var(--mut);color:var(--mut);padding:.15rem .5rem;border-radius:999px;display:inline-block;margin-bottom:4px}
-  nav a{display:inline-block;padding:.5rem .8rem;border:1px solid #2c5a2c;border-radius:8px;color:#9fe19f;margin:0 .15rem}
-  nav a.active, nav a:hover{background:#0c1a0c;border-color:#4a9b4a;color:#b8ffb8}
-  main{padding-top:12px}
+
+  /* header / nav */
+  header.top{position:sticky;top:0;z-index:20;backdrop-filter:blur(6px);
+    background:linear-gradient(180deg, rgba(5,6,8,.85), rgba(5,6,8,.55));
+    border-bottom:1px solid var(--line);
+  }
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .crest{width:22px;height:22px;border:2px solid #a8ff60;border-radius:50%;box-shadow:0 0 10px rgba(168,255,96,.35) inset}
+  .pill{font-size:.72rem;border:1px solid #323c52;color:#9fb2d0;
+    padding:.15rem .5rem;border-radius:999px;display:inline-block;margin-bottom:4px;
+    background:linear-gradient(180deg, rgba(18,22,30,.75), rgba(12,14,18,.75));
+  }
+  nav a{
+    display:inline-block;margin:0 .15rem;padding:.55rem .9rem;border-radius:10px;
+    border:1px solid var(--nav-line); color:var(--nav-ink);
+    background:linear-gradient(180deg, rgba(14,16,22,.7), rgba(10,12,18,.7));
+    text-decoration:none; cursor:pointer; user-select:none;
+  }
+  nav a.active, nav a:hover{
+    color:#121316; border-color:transparent;
+    background:linear-gradient(180deg, var(--amber), var(--amber-2));
+    box-shadow:var(--glowA);
+  }
+
+  /* layout bits */
+  main{padding-top:14px}
   section{display:none}
   section.active{display:block}
-  .hero{display:grid;grid-template-columns: 1fr 1fr;gap:16px;align-items:center}
-  .poster{border:1px dashed #315231;height:240px;border-radius:12px;background:linear-gradient(135deg,#0a0d0a,#0b110b);display:flex;align-items:center;justify-content:center;color:#567;opacity:.8}
-  .poster::after{content:"ENTER CONTINUITY — poster placeholder";font-size:.9rem}
-  .copy h2{margin:.2rem 0 .4rem}
   .grid{display:grid;gap:14px}
   .grid.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
   .grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
-  .card{background:var(--card);border:1px solid var(--grid);border-radius:12px;padding:14px}
-  .mini{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .card{
+    background:linear-gradient(180deg, rgba(17,19,26,.85), rgba(12,14,18,.85));
+    border:1px solid #1c2230; border-radius:14px; padding:14px;
+    box-shadow:0 20px 60px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.02);
+  }
   .muted{color:var(--mut)}
-  .btn{font:inherit;color:var(--fg);background:transparent;border:1px solid var(--fg);padding:.55rem .9rem;border-radius:8px;cursor:pointer}
-  .btn.primary{border-color:var(--accent);color:var(--accent)}
-  .btn.secondary{border-color:#2c5a2c;color:#9fe19f}
-  .btn.danger{border-color:var(--danger);color:var(--danger)}
-  .progress{height:16px;border:1px solid #214021;border-radius:999px;overflow:hidden;background:#071107}
-  .bar{height:100%;width:0;background:linear-gradient(90deg,#1bd96b,#b6f4ff);box-shadow:0 0 16px rgba(27,217,107,.35) inset;transition:width .2s ease}
-  .pill.warn{border:1px solid var(--amber);color:var(--amber);padding:.15rem .5rem;border-radius:999px;display:inline-block}
-  .stack{display:grid;gap:10px}
-  .watermark{height:120px;border:1px dashed #2c2;opacity:.25;border-radius:12px}
-  .locked{position:relative}
-  .locked::after{content:"LOCKED — Silver+ required";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(45deg, rgba(0,0,0,.0) 0 12px, rgba(255,77,77,.08) 12px 24px);border:1px dashed rgba(255,77,77,.35);border-radius:12px;color:#ffa9a9}
-  .pill.tiny{font-size:.7rem}
-  .row{display:flex;gap:8px}
-  label.ack{display:flex;align-items:center;gap:8px;margin:.4rem 0}
-  .switch{display:flex;align-items:center;gap:8px}
-  .switch input{transform:scale(1.1)}
-  .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#567;margin-right:2px}
-  .green{background:#2fd67b}.amber{background:#ffd166}.red{background:#ff4d4d}
-  footer.foot{border-top:1px solid var(--grid);background:#050805}
+  h1,h2,h3{letter-spacing:.02em}
+  h2{font-weight:800;color:#fff;margin:.2rem 0 .6rem}
+
+  /* hero */
+  .hero{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:center}
+  .poster{
+    height:240px;border-radius:14px;border:1px dashed #2f394e;
+    background:
+      radial-gradient(200px 80px at 20% 10%, rgba(255,179,71,.06), transparent 60%),
+      linear-gradient(135deg, #0e1118, #0a0c10);
+    color:#566079; display:flex;align-items:center;justify-content:center;opacity:.9
+  }
+  .poster::after{content:"ENTER CONTINUITY — poster placeholder";font-size:.9rem}
+
+  /* buttons / progress */
+  .btn{font:inherit;border-radius:10px;padding:.6rem 1rem;cursor:pointer;
+    border:1px solid #2c3648;color:#dbe5f7;
+    background:linear-gradient(180deg, rgba(18,22,30,.9), rgba(12,14,18,.9));
+  }
+  .btn.primary{
+    border-color:transparent;color:#111;
+    background:linear-gradient(180deg, var(--amber), var(--amber-2));
+    box-shadow:var(--glowA);
+  }
+  .btn.secondary{border-color:#38455f;color:#cdd8eb}
+  .btn.danger{border-color:#5a2a2a;color:#ff8c8c}
+  .progress{height:14px;border:1px solid #323c52;background:#0a0c12;border-radius:999px;overflow:hidden}
+  .bar{height:100%;width:0;background:linear-gradient(90deg, var(--amber), var(--amber-2));
+    box-shadow:inset 0 0 16px rgba(255,179,71,.25); transition:width .2s ease}
+  .pill.warn{border:1px solid #7a5a2f;color:#ffc680;
+    background:linear-gradient(180deg, rgba(58,38,16,.25), rgba(36,22,10,.25));
+    border-radius:999px;padding:.15rem .5rem;display:inline-block}
+
+  /* panel in the void */
+  .panel-void{
+    max-width:760px; margin:48px auto; padding:28px;
+    border:1px solid #3a2a16;border-radius:16px;
+    background: radial-gradient(900px 360px at 50% -140px, rgba(255,179,71,.06), rgba(0,0,0,0)),
+               linear-gradient(180deg, rgba(20,14,8,.35), rgba(12,10,8,.2));
+    box-shadow:0 60px 140px rgba(0,0,0,.6), inset 0 0 0 1px rgba(255,179,71,.06);
+  }
+  .title-amber{color:var(--amber);margin-top:0}
+  .check-big{width:64px;height:64px;border-radius:50%;border:3px solid var(--emerald);
+    display:inline-flex;align-items:center;justify-content:center;color:var(--emerald);
+    box-shadow:0 0 24px rgba(46,224,134,.25)}
+
+  footer.foot{border-top:1px solid var(--line);background:#06080a}
   .micro{opacity:.8;font-size:.8rem}
-  #boot{position:fixed;inset:0;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;z-index:10}
-  #boot .title{letter-spacing:.12em}
-  #boot .hint{opacity:.8}
-  @media (max-width: 900px){ .hero{grid-template-columns:1fr} }
+
+  /* mobile */
+  @media (max-width:900px){ .hero{grid-template-columns:1fr} .grid.cols-3{grid-template-columns:1fr} .grid.cols-2{grid-template-columns:1fr} }
 </style>
 </head>
 <body>
 
-<!-- Boot overlay -->
-<section id="boot" aria-live="polite">
-  <div class="title">S.O.L.E.M. // DSYNC</div>
-  <div class="progress" style="width:min(720px,90vw)"><div class="bar" id="bootBar"></div></div>
-  <div class="hint"><span id="bootPct">0%</span> — Click to prime audio</div>
-  <div class="row"><button class="btn" id="mute">Unmute</button><button class="btn primary" id="skip">Skip</button></div>
-  <audio id="bootSfx" src="./BOOT.wav" preload="auto"></audio>
-  <audio id="dsync" src="./DSYNC.mp3" preload="auto" loop></audio>
-</section>
-
-<header class="top"><div class="wrap bar">
-  <div class="brand"><div class="crest"></div><div><div class="pill">Classified System</div><h1>S.O.L.E.M.</h1></div></div>
-  <nav>
-    <a data-go="home" class="active">Home</a>
-    <a data-go="sterile">Assessment</a>
-    <a data-go="archives">Archives</a>
-    <a data-go="stats">Statistics</a>
-    <a data-go="community">Community</a>
-    <a data-go="transfer">Transfer</a>
-    <a data-go="profile">Profile</a>
-  </nav>
-</div></header>
+<header class="top">
+  <div class="wrap bar">
+    <div class="brand">
+      <div class="crest" aria-hidden="true"></div>
+      <div>
+        <div class="pill">Classified System</div>
+        <h1 style="margin:.1rem 0 0">S.O.L.E.M.</h1>
+      </div>
+    </div>
+    <nav aria-label="Sections">
+      <a data-go="home" class="active">Home</a>
+      <a data-go="sterile">Assessment</a>
+      <a data-go="archives">Archives</a>
+      <a data-go="stats">Statistics</a>
+      <a data-go="community">Community</a>
+      <a data-go="transfer">Transfer</a>
+      <a data-go="profile">Profile</a>
+    </nav>
+  </div>
+</header>
 
 <main class="wrap">
+
   <!-- HOME -->
   <section id="home" class="active">
     <div class="hero">
       <div class="poster"></div>
       <div class="copy">
-        <h2>Because Memory Is a Choice™</h2>
+        <h2 class="title-amber">Because Memory Is a Choice™</h2>
         <p class="muted">Sentient Observer Linked to Energy & Memory. Join the pursuit of perfect remembrance.</p>
-        <div class="cta">
+        <div class="cta" style="margin-top:10px">
           <button class="btn primary" data-go="sterile">Begin Assessment</button>
           <button class="btn secondary" data-go="stats">View Statistics</button>
         </div>
@@ -104,110 +162,276 @@
     <div class="grid cols-3" style="margin-top:14px">
       <div class="card"><h3>Tiered Access</h3><p class="muted">Bronze → Silver → Gold → Platinum. Archives unlock by rank.</p></div>
       <div class="card"><h3>Confidentiality</h3><p class="muted">Internal materials. Unauthorized duplication → Tribunal review.</p></div>
-      <div class="card mini"><div id="clock">00:00:00</div><div id="weather" class="muted">Weather: (location disabled)</div></div>
+      <div class="card"><h3>DSYNC Status</h3><p class="muted">Progress: <span id="homePct">0%</span> • Consent: <span id="homeConsent">No</span></p></div>
     </div>
   </section>
 
-  <!-- DSYNC sterilization -->
-  <section id="sterile">
-    <h2>Protocol DSYNC — Sterilization Audio</h2>
-    <p class="muted">Complete this audio to unlock assessments. Keep volume enabled.</p>
-    <div class="player card">
-      <div class="progress"><div class="bar" id="bar"></div></div>
-      <div class="row" style="margin-top:8px"><span id="elapsed">0:00</span> / <span id="total">0:00</span> — <span id="eta">ETA --:--</span></div>
-      <div class="row" style="margin-top:8px"><button class="btn primary" id="playDsync">Play</button><button class="btn" id="restartDsync">Restart</button></div>
-    </div>
-    <p id="sterileStatus" class="pill warn">Locked</p>
-    <div class="cta"><button class="btn secondary" id="continueToConsent" disabled>Continue → Consent</button></div>
-  </section>
+  <!-- STERILIZATION (panel-in-void) -->
+  <section id="sterile" class="panel-void">
+    <h2 class="title-amber">Cognitive Sterilization</h2>
+    <p class="muted" style="margin-top:-6px">[System Ident: Δ-44b] Initializing Sentient Observer link… Click once to prime audio.</p>
 
-  <!-- Consent -->
-  <section id="consent">
-    <h2>Participation Agreement — Protocol Δ-44b</h2>
-    <div class="consent-box card">
-      <div class="scroll" id="consentText" style="max-height:180px;overflow:auto">
-        <p class="muted">By proceeding, you acknowledge the fictional nature of this portal and consent to simulated access gates. Because Memory Is a Choice™.</p>
-        <p class="muted">No data is sent anywhere. Everything stays in your browser’s localStorage until you clear it.</p>
+    <div class="card" style="margin-top:10px">
+      <div class="progress"><div class="bar" id="dsBar"></div></div>
+      <div style="display:flex;gap:10px;align-items:center;margin-top:8px">
+        <span class="muted"><span id="elapsed">0:00</span> / <span>1:30</span> — ETA <span id="eta">1:30</span></span>
+        <span class="muted" style="margin-left:auto">Audio: <span id="audState">paused</span></span>
       </div>
-      <label class="ack"><input type="checkbox" id="ack21"> I affirm I am 21+.</label>
-      <label class="ack"><input type="checkbox" id="ackUnderstand"> I have read and understand the Agreement.</label>
-      <div class="row"><button class="btn danger" id="decline">Decline</button><button class="btn primary" id="accept" disabled>I CONSENT AND UNDERSTAND</button></div>
-      <p class="muted pill tiny">Declining bars future access until this site’s data is cleared.</p>
+      <div style="display:flex;gap:8px;margin-top:8px">
+        <button class="btn primary" id="playDsync">Play</button>
+        <button class="btn" id="restartDsync">Restart</button>
+        <button class="btn" id="muteBtn">Unmute</button>
+        <button class="btn" id="skipBtn">Skip</button>
+      </div>
+    </div>
+
+    <p id="lockBadge" class="pill warn" style="margin-top:10px">Locked</p>
+    <div style="margin-top:8px">
+      <button class="btn secondary" id="toConsent" disabled>Continue → Consent</button>
+    </div>
+
+    <!-- audio (local files in same folder) -->
+    <audio id="bootSfx" src="./BOOT.wav" preload="auto"></audio>
+    <audio id="dsync"   src="./DSYNC.mp3" preload="auto" loop></audio>
+  </section>
+
+  <!-- Sterilization complete -->
+  <section id="sterileDone" class="panel-void" style="display:none;text-align:center">
+    <div class="check-big">✓</div>
+    <h2 style="margin:.6rem 0 0">Sterilization Complete</h2>
+    <p class="muted" style="margin:.25rem 0 1rem">Neural synchronization verified. Proceeding to assessment…</p>
+    <button class="btn primary" data-go="consent">Continue</button>
+  </section>
+
+  <!-- CONSENT -->
+  <section id="consent" class="panel-void" style="display:none">
+    <h2 class="title-amber">Welcome, Recruit.</h2>
+    <p class="muted">You are about to enter the S.O.L.E.M. Cognitive Calibration Environment. Participation is mandatory once initiated.</p>
+    <div class="card" style="margin-top:10px">
+      <p class="muted">By proceeding, you acknowledge the fictional nature of this portal and consent to simulated access gates. No data leaves your browser.</p>
+      <label style="display:flex;gap:8px;align-items:center;margin:.4rem 0"><input type="checkbox" id="ack21"> I affirm I am 21+.</label>
+      <label style="display:flex;gap:8px;align-items:center;margin:.4rem 0"><input type="checkbox" id="ackUnderstand"> I have read and understand the Agreement.</label>
+      <div style="display:flex;gap:8px;margin-top:8px">
+        <button class="btn danger" id="decline">Decline</button>
+        <button class="btn primary" id="accept" disabled>I CONSENT AND UNDERSTAND</button>
+      </div>
+      <p class="muted" style="margin-top:6px"><span class="pill warn">Note</span> Declining bars future access until site data is cleared.</p>
     </div>
   </section>
 
-  <!-- Assessment -->
-  <section id="assessment">
-    <h2>Recruit Assessment — Path Selection</h2>
-    <div class="grid cols-3 paths">
-      <div class="card"><h3>Alpha — Cognitive Observer</h3><p class="muted">Weights: CDD-A (P) / TSE-B (S) / EPAS-E (T)</p><button class="btn" data-path="alpha">Select Alpha</button></div>
-      <div class="card"><h3>Beta — Temporal Analyst</h3><p class="muted">Weights: TSE-B (P) / PII-C (S) / CDD-A (T)</p><button class="btn" data-path="beta">Select Beta</button></div>
-      <div class="card"><h3>Gamma — Empathic Processor</h3><p class="muted">Weights: EPAS-E (P) / CDD-A (S) / TSE-B (T)</p><button class="btn" data-path="gamma">Select Gamma</button></div>
+  <!-- ASSESSMENT -->
+  <section id="assessment" style="display:none">
+    <h2>Assessment Path Selection</h2>
+    <div class="grid cols-3">
+      <div class="card"><h3>Path Alpha — Cognitive Observer</h3><p class="muted">CDD-A (P) / TSE-B (S) / EPAS-E (T)</p><button class="btn" data-path="alpha">Select Alpha</button></div>
+      <div class="card"><h3>Path Beta — Temporal Analyst</h3><p class="muted">TSE-B (P) / PII-C (S) / CDD-A (T)</p><button class="btn" data-path="beta">Select Beta</button></div>
+      <div class="card"><h3>Path Gamma — Empathic Processor</h3><p class="muted">EPAS-E (P) / CDD-A (S) / TSE-B (T)</p><button class="btn" data-path="gamma">Select Gamma</button></div>
     </div>
     <div id="questionPane" class="card" style="margin-top:12px;display:none"></div>
   </section>
 
-  <!-- Archives -->
-  <section id="archives">
+  <!-- ARCHIVES -->
+  <section id="archives" style="display:none">
     <h2>Lore Archive</h2>
-    <p class="muted">Access depends on rank. Poster displayed for orientation.</p>
-    <div class="watermark"></div>
-    <div class="locked card"><p>Archive access requires Silver+.</p></div>
+    <div class="card muted">Archive access requires Silver+. (Mock)</div>
   </section>
 
-  <!-- Stats -->
-  <section id="stats">
+  <!-- STATS -->
+  <section id="stats" style="display:none">
     <h2>Public Statistics</h2>
     <div class="grid cols-3">
       <div class="card"><h3>Active Recruits</h3><div id="recruitCount">1,107</div></div>
-      <div class="card"><h3>Geo Distribution</h3><div id="geoChart" class="muted">Enable location &amp; submissions</div></div>
+      <div class="card"><h3>Geo Distribution</h3><div class="muted">Enable location &amp; submissions</div></div>
       <div class="card"><h3>Monthly Refresh</h3><p class="muted">Hiring stats refresh monthly.</p></div>
     </div>
   </section>
 
-  <!-- Community -->
-  <section id="community">
+  <!-- COMMUNITY -->
+  <section id="community" style="display:none">
     <h2>Community & Debates (21+)</h2>
-    <p class="muted">Asynchronous threads (mock). Refresh to check fake updates.</p>
     <div class="card"><button class="btn" id="newThread">New Statement / Debate</button></div>
-    <div id="threads" class="stack"></div>
+    <div id="threads" class="grid"></div>
   </section>
 
-  <!-- Transfer -->
-  <section id="transfer">
+  <!-- TRANSFER -->
+  <section id="transfer" style="display:none">
     <h2>Transfer Room — Ephemeral (5 min)</h2>
-    <p class="muted">Gold/Platinum can open airlocks to share files (mock only).</p>
     <div class="grid cols-3">
-      <div class="card"><h3>Status</h3><p>Presence: <span class="dot green"></span> Active • <span class="dot amber"></span> Away • <span class="dot red"></span> Inactive</p><label class="switch"><input type="checkbox" id="airlock"><span> Open Airlock</span></label></div>
+      <div class="card"><h3>Status</h3><p>Presence: Active / Away / Inactive</p></div>
       <div class="card"><h3>Create Link (G/P)</h3><input type="file" id="filePick"><button class="btn" id="shareFile">Generate Share</button><div id="shareOut" class="muted micro"></div></div>
       <div class="card"><h3>Join Link</h3><input type="text" id="joinCode" placeholder="Paste code"><button class="btn" id="joinShare">Join</button><div id="shareIn" class="muted micro"></div></div>
     </div>
   </section>
 
-  <!-- Profile -->
-  <section id="profile">
+  <!-- PROFILE -->
+  <section id="profile" style="display:none">
     <h2>Profile</h2>
     <div class="card">
       <label>Display Name <input id="handle"></label>
       <label>Country <input id="country"></label>
       <label>Province/State <input id="region"></label>
       <label><input type="checkbox" id="publicProfile"> Public Profile (opt-in)</label>
-      <label>Avatar (censored by default) <input type="file" id="avatar"></label>
-      <div class="row"><button class="btn" id="saveProfile">Save</button><button class="btn danger" id="reset">Reset</button></div>
+      <div style="display:flex;gap:8px;margin-top:8px">
+        <button class="btn" id="saveProfile">Save</button>
+        <button class="btn danger" id="reset">Reset</button>
+      </div>
     </div>
     <div class="card"><h3>Recruit ID</h3><div id="recruitId">Unassigned</div></div>
   </section>
 </main>
 
-<footer class="foot"><div class="wrap"><span class="micro">S.O.L.E.M. INTERNAL — Rev. X — ©MMXXV — “Because Memory Is a Choice™”</span></div></footer>
+<footer class="foot">
+  <div class="wrap"><span class="micro">S.O.L.E.M. INTERNAL — Rev. X — ©MMXXV — “Because Memory Is a Choice™”</span></div>
+</footer>
 
 <script>
 (function(){
-  const $ = (s,ctx=document)=>ctx.querySelector(s);
+  const $  = (s,ctx=document)=>ctx.querySelector(s);
   const $$ = (s,ctx=document)=>Array.from(ctx.querySelectorAll(s));
-  const state = {dsyncPct:Number(localStorage.getItem('sol_dsync_pct')||0),consent:localStorage.getItem('sol_consent')==='1',id:localStorage.getItem('sol_id')||'Unassigned',threads:JSON.parse(localStorage.getItem('sol_threads')||'[]')};
-  const boot=$('#boot'),bootBar=$('#bootBar'),bootPct=$('#bootPct'),muteBtn=$('#mute'),skipBtn=$('#skip');
-  const aBoot=$('#bootSfx'),aDsync=$('#dsync');
-  let interacted=false;
-  const setBoot=(p)=>{p=Math.min(100,Math.max(0,p|0));bootBar.style.width=p+'%';bootPct.textContent=p+'%';localStorage.setItem('sol_dsync_pct',String(p));state.dsyncPct=p;if(p>=100){boot.style.display='none';}};
-  const startBoot=()=>{setBoot(state.dsyncPct);if(state.dsyncPct>=100){boot.style.display='none';return;}const t=setInterval(()=>{setBoot(state.dsyncPct+(Math.random()*9+3));if(state.d
+
+  // --- simple nav ---
+  function show(id){
+    $$('main > section').forEach(s=>s.style.display='none');
+    $('#'+id).style.display='';
+    $$('header nav a').forEach(a=>a.classList.toggle('active', a.dataset.go===id));
+  }
+  $$('header nav a, [data-go]').forEach(a=>{
+    a.addEventListener('click', e=>{ const to=a.dataset.go; if(to){ e.preventDefault(); show(to); }});
+  });
+
+  // mirror DSYNC/consent on home tiles
+  const syncHome = ()=>{ $('#homePct').textContent = (Number(localStorage.getItem('sol_dsync_pct'))||0) + '%';
+                         $('#homeConsent').textContent = localStorage.getItem('sol_consent')==='1' ? 'Yes':'No'; };
+
+  // --- audio refs ---
+  const aBoot = $('#bootSfx');
+  const aLoop = $('#dsync');
+  const audState = $('#audState');
+  let audioPrimed = false;
+
+  // prime audio on first pointer
+  const primeAudio = ()=> {
+    if(audioPrimed) return;
+    audioPrimed = true;
+    try{
+      aBoot.volume = .45; aBoot.currentTime = 0; aBoot.play().catch(()=>{});
+      aLoop.volume = .14; aLoop.play().catch(()=>{});
+      audState.textContent = 'playing';
+      $('#muteBtn').textContent='Mute';
+    }catch(e){}
+  };
+  document.addEventListener('pointerdown', primeAudio, { once:true });
+
+  // audio controls
+  $('#muteBtn').addEventListener('click', ()=>{
+    if(aLoop.paused || aLoop.muted){ aLoop.muted=false; aLoop.play().catch(()=>{}); audState.textContent='playing'; $('#muteBtn').textContent='Mute'; }
+    else { aLoop.muted=true; aLoop.pause(); audState.textContent='muted'; $('#muteBtn').textContent='Unmute'; }
+  });
+
+  // --- DSYNC progress (mock 90s) ---
+  const bar = $('#dsBar'), elapsed=$('#elapsed'), eta=$('#eta'), toConsent=$('#toConsent');
+  let pct = Number(localStorage.getItem('sol_dsync_pct')||0);
+  function fmt(s){ const m=Math.floor(s/60), ss=String(Math.floor(s%60)).padStart(2,'0'); return m+':'+ss; }
+  function renderDS(){
+    const p = Math.min(100, Math.max(0, pct|0));
+    bar.style.width = p + '%';
+    elapsed.textContent = fmt((p/100)*90);
+    eta.textContent = fmt(90 - (p/100)*90);
+    $('#lockBadge').textContent = p>=100 ? 'READY' : 'Locked';
+    toConsent.disabled = !(p>=100);
+    localStorage.setItem('sol_dsync_pct', String(p));
+    syncHome();
+  }
+  $('#playDsync').addEventListener('click', ()=>{
+    primeAudio();
+    if(pct>=100) return;
+    const t = setInterval(()=>{
+      pct += Math.random()*7 + 3;
+      if(pct>=100){ pct=100; clearInterval(t); $('#sterile').style.display='none'; $('#sterileDone').style.display=''; }
+      renderDS();
+    }, 180);
+  });
+  $('#restartDsync').addEventListener('click', ()=>{ pct=0; renderDS(); });
+  $('#skipBtn').addEventListener('click', ()=>{ pct=100; renderDS(); $('#sterile').style.display='none'; $('#sterileDone').style.display=''; });
+  toConsent.addEventListener('click', ()=> show('consent'));
+  renderDS();
+
+  // --- consent ---
+  function renderConsentBtn(){
+    $('#accept').disabled = !($('#ack21').checked && $('#ackUnderstand').checked);
+  }
+  $('#ack21').addEventListener('change', renderConsentBtn);
+  $('#ackUnderstand').addEventListener('change', renderConsentBtn);
+  $('#accept').addEventListener('click', ()=>{
+    localStorage.setItem('sol_consent','1');
+    syncHome();
+    show('assessment');
+  });
+  $('#decline').addEventListener('click', ()=>{
+    localStorage.setItem('sol_consent','0');
+    alert('Access declined. Clear site data to reset.');
+    syncHome();
+    show('home');
+  });
+
+  // --- assessment mock ---
+  const pane = $('#questionPane');
+  $$('[data-path]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const ok = (Number(localStorage.getItem('sol_dsync_pct')||0)>=100) && (localStorage.getItem('sol_consent')==='1');
+      if(!ok){ alert('Complete DSYNC and Consent first.'); return; }
+      pane.style.display='block';
+      const P = btn.dataset.path.toUpperCase();
+      pane.innerHTML = '<h3>'+P+' Path</h3>'
+        + '<p class="muted">Q1. Describe your earliest memory of a mirrored surface. (50–120 words)</p>'
+        + '<p class="muted">Q2. Define “Order is mastery of chaos” using a personal example. (50–120 words)</p>'
+        + '<p class="muted">Q3. Choose: CDD-A / TSE-B / EPAS-E — justify your weighting.</p>';
+    });
+  });
+
+  // --- community (local only) ---
+  const threads = JSON.parse(localStorage.getItem('sol_threads')||'[]');
+  function renderThreads(){
+    const box = $('#threads'); box.innerHTML='';
+    threads.forEach(t=>{ const d=document.createElement('div'); d.className='card'; d.innerHTML='<strong>'+t.title+'</strong><p class="muted">'+t.body+'</p>'; box.appendChild(d); });
+  }
+  $('#newThread').addEventListener('click', ()=>{
+    const ok = (Number(localStorage.getItem('sol_dsync_pct')||0)>=100) && (localStorage.getItem('sol_consent')==='1');
+    if(!ok){ alert('Unlock access first.'); return; }
+    const title = prompt('Statement title?'); if(!title) return;
+    const body  = prompt('One-sentence position?'); if(body==null) return;
+    threads.unshift({title, body, ts: Date.now()});
+    localStorage.setItem('sol_threads', JSON.stringify(threads));
+    renderThreads();
+  });
+  renderThreads();
+
+  // --- transfer (mock) ---
+  $('#shareFile').addEventListener('click', ()=>{
+    const code = Math.random().toString(36).slice(2,8).toUpperCase();
+    $('#shareOut').textContent = 'Share code: '+code+' (expires in 5m — not really)';
+  });
+  $('#joinShare').addEventListener('click', ()=>{
+    $('#shareIn').textContent = 'Joined link '+($('#joinCode').value || '??????')+' (mock)';
+  });
+
+  // --- profile ---
+  $('#saveProfile').addEventListener('click', ()=>{
+    let id = localStorage.getItem('sol_id');
+    if(!id || id==='Unassigned'){
+      const n = crypto.getRandomValues(new Uint32Array(2));
+      id = Array.from(n).map(v=>v.toString(16).padStart(8,'0')).join('-');
+      localStorage.setItem('sol_id', id);
+    }
+    const name = $('#handle').value || 'Recruit';
+    $('#recruitId').textContent = id + ' // ' + name;
+    alert('Saved locally.');
+  });
+  $('#reset').addEventListener('click', ()=>{ localStorage.clear(); location.reload(); });
+
+  // initial mirrors
+  syncHome();
+})();
+</script>
+</body>
+</html>
