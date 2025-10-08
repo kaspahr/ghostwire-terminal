@@ -5,120 +5,132 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>S.O.L.E.M. — Recruit Portal</title>
 <meta name="theme-color" content="#0a0a0a" />
-<meta name="description" content="S.O.L.E.M. Recruit Portal — amber/black static mock for GitHub Pages." />
-
+<meta name="description" content="S.O.L.E.M. Recruit Portal — amber/black glassy mock for GitHub Pages." />
 <style>
   :root{
-    --bg:#0a0a0a; --ink:#e9edf5; --mut:#9aa3b2; --line:#1c1f26;
-    --panel:#0c0c0e; --panel-2:#0e0f13;
-    --amber:#ffb347; --amber-2:#ff9a2b; --emerald:#2ee086;
-    --nav:#0d1017; --nav-line:#283244; --nav-ink:#c9d3e3;
-    --glowA:0 0 .8rem rgba(255,179,71,.25), 0 0 3rem rgba(255,179,71,.08);
+    --bg:#0a0a0a;
+    --ink:#e9edf5; --mut:#a3afc4; --line:#1a2030;
+    --panel:#0d1016; --panel2:#0b0e13;
+    --amber:#ffb347; --amber2:#ff9422;
+    --emerald:#2ee086; --red:#ff736a;
+    --pill:#1a2233; --pill-bd:#33405a; --pill-ink:#9fb2d0;
+    --card-bd:#1c2436; --card-bg1:rgba(19,22,32,.82); --card-bg2:rgba(12,14,20,.82);
+    --glowA:0 6px 18px rgba(255,179,71,.16), 0 0 28px rgba(255,179,71,.10);
+    --glowB:0 0 0 1px rgba(255,179,71,.08) inset, 0 14px 40px rgba(0,0,0,.45);
   }
   *{box-sizing:border-box}
   html,body{height:100%}
   body{
-    margin:0; color:#dfe4ee;
-    font-family:ui-monospace, Menlo, Monaco, "Courier New", monospace;
+    margin:0; color:var(--ink);
+    font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji",sans-serif;
     background:
-      radial-gradient(1200px 600px at 50% -10%, #0f1220 0%, #0b0d14 40%, #08090c 70%, #070707 100%);
+      radial-gradient(1600px 700px at 50% -10%, #12162a 0%, #0e1220 40%, #0a0c12 70%, #07080b 100%);
   }
-  /* subtle CRT vibe */
-  body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.25;
-    background:repeating-linear-gradient(to bottom, rgba(255,255,255,.03), transparent 2px, transparent 3px);
-    mix-blend-mode:overlay;
-  }
+  /* subtle scanlines + vignette */
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.2;
+    background:repeating-linear-gradient(to bottom, rgba(255,255,255,.025), transparent 2px, transparent 3px);
+    mix-blend-mode:overlay;}
+  body::after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.75;
+    background:radial-gradient(1100px 540px at 50% 10%, rgba(0,0,0,.0), rgba(0,0,0,.55) 65%, rgba(0,0,0,.85) 100%);}
 
-  .wrap{max-width:1200px;margin:0 auto;padding:16px}
+  .wrap{max-width:1200px;margin:0 auto;padding:20px}
 
-  /* header / nav */
-  header.top{position:sticky;top:0;z-index:20;backdrop-filter:blur(6px);
-    background:linear-gradient(180deg, rgba(5,6,8,.85), rgba(5,6,8,.55));
-    border-bottom:1px solid var(--line);
-  }
-  .bar{display:flex;align-items:center;justify-content:space-between;gap:16px}
+  /* header */
+  header.top{position:sticky;top:0;z-index:30;backdrop-filter:blur(8px);
+    background:linear-gradient(180deg, rgba(10,12,18,.75), rgba(10,12,18,.45));
+    border-bottom:1px solid var(--line);}
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:18px}
   .brand{display:flex;align-items:center;gap:12px}
-  .crest{width:22px;height:22px;border:2px solid #a8ff60;border-radius:50%;box-shadow:0 0 10px rgba(168,255,96,.35) inset}
-  .pill{font-size:.72rem;border:1px solid #323c52;color:#9fb2d0;
-    padding:.15rem .5rem;border-radius:999px;display:inline-block;margin-bottom:4px;
-    background:linear-gradient(180deg, rgba(18,22,30,.75), rgba(12,14,18,.75));
-  }
+  .crest{width:26px;height:26px;border-radius:50%;border:2px solid #c7ff8c;box-shadow:0 0 14px rgba(167,255,120,.35) inset}
+  .pill{display:inline-flex;align-items:center;gap:8px;
+    font-size:.78rem; padding:.28rem .6rem; border-radius:999px;
+    color:var(--pill-ink); border:1px solid var(--pill-bd);
+    background:linear-gradient(180deg, rgba(26,34,51,.85), rgba(14,18,28,.85));}
+  .pill .dot{width:8px;height:8px;border-radius:999px;background:#6fe57a;box-shadow:0 0 10px rgba(111,229,122,.35)}
+  h1{margin:.15rem 0 0;font-weight:800;letter-spacing:.02em}
+
   nav a{
-    display:inline-block;margin:0 .15rem;padding:.55rem .9rem;border-radius:10px;
-    border:1px solid var(--nav-line); color:var(--nav-ink);
-    background:linear-gradient(180deg, rgba(14,16,22,.7), rgba(10,12,18,.7));
-    text-decoration:none; cursor:pointer; user-select:none;
+    display:inline-block;margin:0 .18rem;padding:.58rem 1rem;border-radius:12px;
+    border:1px solid #2a3346; color:#cfe0ff; text-decoration:none; user-select:none;
+    background:linear-gradient(180deg, rgba(20,24,34,.7), rgba(12,14,20,.7));
   }
   nav a.active, nav a:hover{
-    color:#121316; border-color:transparent;
-    background:linear-gradient(180deg, var(--amber), var(--amber-2));
+    color:#16181b; border-color:transparent;
+    background:linear-gradient(180deg, var(--amber), var(--amber2));
     box-shadow:var(--glowA);
   }
 
-  /* layout bits */
+  /* sections */
   main{padding-top:14px}
   section{display:none}
-  section.active{display:block}
-  .grid{display:grid;gap:14px}
-  .grid.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+  section.show{display:block}
+
+  .grid{display:grid;gap:16px}
+  .grid.c2{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .grid.c3{grid-template-columns:repeat(3,minmax(0,1fr))}
+  @media (max-width:960px){ .grid.c2,.grid.c3{grid-template-columns:1fr} }
+
   .card{
-    background:linear-gradient(180deg, rgba(17,19,26,.85), rgba(12,14,18,.85));
-    border:1px solid #1c2230; border-radius:14px; padding:14px;
-    box-shadow:0 20px 60px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.02);
+    border:1px solid var(--card-bd); border-radius:14px; padding:16px;
+    background:linear-gradient(180deg, var(--card-bg1), var(--card-bg2));
+    box-shadow:var(--glowB);
   }
   .muted{color:var(--mut)}
-  h1,h2,h3{letter-spacing:.02em}
-  h2{font-weight:800;color:#fff;margin:.2rem 0 .6rem}
+  h2{font-weight:800;letter-spacing:.015em;margin:.2rem 0 .7rem}
+  .h-amber{color:var(--amber)}
 
-  /* hero */
-  .hero{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:center}
+  .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:center}
   .poster{
-    height:240px;border-radius:14px;border:1px dashed #2f394e;
+    height:260px;border-radius:16px;border:1px dashed #33425e;
     background:
-      radial-gradient(200px 80px at 20% 10%, rgba(255,179,71,.06), transparent 60%),
-      linear-gradient(135deg, #0e1118, #0a0c10);
-    color:#566079; display:flex;align-items:center;justify-content:center;opacity:.9
-  }
-  .poster::after{content:"ENTER CONTINUITY — poster placeholder";font-size:.9rem}
+      radial-gradient(240px 100px at 18% 12%, rgba(255,179,71,.09), transparent 60%),
+      linear-gradient(135deg, #121724, #0c101a);
+    color:#5d6a86; display:flex;align-items:center;justify-content:center}
 
-  /* buttons / progress */
-  .btn{font:inherit;border-radius:10px;padding:.6rem 1rem;cursor:pointer;
-    border:1px solid #2c3648;color:#dbe5f7;
-    background:linear-gradient(180deg, rgba(18,22,30,.9), rgba(12,14,18,.9));
+  .btn{
+    font:inherit; border-radius:12px; padding:.7rem 1.1rem; cursor:pointer;
+    border:1px solid #33445f; color:#e8f0ff; background:linear-gradient(180deg, rgba(18,22,32,.92), rgba(12,14,20,.92));
   }
   .btn.primary{
-    border-color:transparent;color:#111;
-    background:linear-gradient(180deg, var(--amber), var(--amber-2));
+    color:#181a1d; border-color:transparent;
+    background:linear-gradient(180deg, var(--amber), var(--amber2));
     box-shadow:var(--glowA);
   }
-  .btn.secondary{border-color:#38455f;color:#cdd8eb}
-  .btn.danger{border-color:#5a2a2a;color:#ff8c8c}
-  .progress{height:14px;border:1px solid #323c52;background:#0a0c12;border-radius:999px;overflow:hidden}
-  .bar{height:100%;width:0;background:linear-gradient(90deg, var(--amber), var(--amber-2));
-    box-shadow:inset 0 0 16px rgba(255,179,71,.25); transition:width .2s ease}
-  .pill.warn{border:1px solid #7a5a2f;color:#ffc680;
-    background:linear-gradient(180deg, rgba(58,38,16,.25), rgba(36,22,10,.25));
-    border-radius:999px;padding:.15rem .5rem;display:inline-block}
+  .btn.ghost{border-color:#405072;color:#cfe0ff}
+  .btn.danger{border-color:#5a2a2a;color:#ff9a9a}
+
+  .progress{height:14px; border:1px solid #36445f; background:#0b0f17; border-radius:999px; overflow:hidden}
+  .bar{height:100%; width:0%;
+    background:linear-gradient(90deg, var(--amber), var(--amber2)); box-shadow:inset 0 0 16px rgba(255,179,71,.25);
+    transition:width .2s ease}
 
   /* panel in the void */
-  .panel-void{
-    max-width:760px; margin:48px auto; padding:28px;
-    border:1px solid #3a2a16;border-radius:16px;
-    background: radial-gradient(900px 360px at 50% -140px, rgba(255,179,71,.06), rgba(0,0,0,0)),
-               linear-gradient(180deg, rgba(20,14,8,.35), rgba(12,10,8,.2));
-    box-shadow:0 60px 140px rgba(0,0,0,.6), inset 0 0 0 1px rgba(255,179,71,.06);
+  .void{
+    max-width:820px; margin:52px auto; padding:26px 26px 20px;
+    border:1px solid #3e2b13; border-radius:18px;
+    background:
+      radial-gradient(1200px 420px at 50% -160px, rgba(255,179,71,.08), rgba(0,0,0,0)),
+      linear-gradient(180deg, rgba(24,16,8,.35), rgba(12,10,8,.22));
+    box-shadow:0 70px 160px rgba(0,0,0,.6), inset 0 0 0 1px rgba(255,179,71,.07);
   }
-  .title-amber{color:var(--amber);margin-top:0}
-  .check-big{width:64px;height:64px;border-radius:50%;border:3px solid var(--emerald);
-    display:inline-flex;align-items:center;justify-content:center;color:var(--emerald);
-    box-shadow:0 0 24px rgba(46,224,134,.25)}
+  .check{
+    width:70px;height:70px;border-radius:50%; border:3px solid var(--emerald);
+    display:inline-flex; align-items:center; justify-content:center; color:var(--emerald);
+    box-shadow:0 0 28px rgba(46,224,134,.28); font-size:34px
+  }
+  .warn-pill{display:inline-flex;align-items:center;gap:8px;
+    border:1px solid #80592a; color:#ffd19a;
+    background:linear-gradient(180deg, rgba(64,40,16,.28), rgba(42,24,10,.28));
+    padding:.2rem .55rem;border-radius:999px;font-size:.85rem}
 
-  footer.foot{border-top:1px solid var(--line);background:#06080a}
-  .micro{opacity:.8;font-size:.8rem}
+  footer.foot{border-top:1px solid var(--line); background:#070a0f}
+  .micro{opacity:.78;font-size:.85rem}
 
-  /* mobile */
-  @media (max-width:900px){ .hero{grid-template-columns:1fr} .grid.cols-3{grid-template-columns:1fr} .grid.cols-2{grid-template-columns:1fr} }
+  /* small inputs */
+  label.row{display:flex;gap:10px;align-items:center;margin:.45rem 0}
+  input[type="text"], input[type="file"]{
+    background:#0d1220; color:#e8f0ff; border:1px solid #2a3346; border-radius:10px; padding:.55rem .7rem; width:100%;
+  }
 </style>
 </head>
 <body>
@@ -128,8 +140,8 @@
     <div class="brand">
       <div class="crest" aria-hidden="true"></div>
       <div>
-        <div class="pill">Classified System</div>
-        <h1 style="margin:.1rem 0 0">S.O.L.E.M.</h1>
+        <div class="pill"><span class="dot"></span> Classified System</div>
+        <h1>S.O.L.E.M.</h1>
       </div>
     </div>
     <nav aria-label="Sections">
@@ -145,89 +157,90 @@
 </header>
 
 <main class="wrap">
-
   <!-- HOME -->
-  <section id="home" class="active">
+  <section id="home" class="show">
     <div class="hero">
-      <div class="poster"></div>
-      <div class="copy">
-        <h2 class="title-amber">Because Memory Is a Choice™</h2>
-        <p class="muted">Sentient Observer Linked to Energy & Memory. Join the pursuit of perfect remembrance.</p>
-        <div class="cta" style="margin-top:10px">
+      <div class="poster">ENTER CONTINUITY — poster</div>
+      <div>
+        <h2 class="h-amber">S.O.L.E.M.</h2>
+        <p class="muted" style="max-width:50ch">Sentient Observer Linked to Energy & Memory. A research initiative dedicated to cognitive clarity through technological synchronization.</p>
+        <div style="display:flex;gap:10px;margin-top:12px">
           <button class="btn primary" data-go="sterile">Begin Assessment</button>
-          <button class="btn secondary" data-go="stats">View Statistics</button>
+          <button class="btn ghost" data-go="stats">View Statistics</button>
         </div>
+        <div class="pill" style="margin-top:10px">Because Memory Is a Choice™</div>
       </div>
     </div>
-    <div class="grid cols-3" style="margin-top:14px">
+
+    <div class="grid c3" style="margin-top:18px">
+      <div class="card"><h3>Cognitive Assessment</h3><p class="muted">Complete one of three specialized surveys aligned to your natural strengths.</p></div>
       <div class="card"><h3>Tiered Access</h3><p class="muted">Bronze → Silver → Gold → Platinum. Archives unlock by rank.</p></div>
-      <div class="card"><h3>Confidentiality</h3><p class="muted">Internal materials. Unauthorized duplication → Tribunal review.</p></div>
-      <div class="card"><h3>DSYNC Status</h3><p class="muted">Progress: <span id="homePct">0%</span> • Consent: <span id="homeConsent">No</span></p></div>
+      <div class="card"><h3>Recruit Community</h3><p class="muted">Connect via statements, debates, and polls. (Mock only.)</p></div>
     </div>
   </section>
 
-  <!-- STERILIZATION (panel-in-void) -->
-  <section id="sterile" class="panel-void">
-    <h2 class="title-amber">Cognitive Sterilization</h2>
+  <!-- STERILIZATION -->
+  <section id="sterile" class="void" style="display:none">
+    <h2 class="h-amber" style="margin-top:0">Cognitive Sterilization</h2>
     <p class="muted" style="margin-top:-6px">[System Ident: Δ-44b] Initializing Sentient Observer link… Click once to prime audio.</p>
 
-    <div class="card" style="margin-top:10px">
+    <div class="card" style="margin-top:12px">
       <div class="progress"><div class="bar" id="dsBar"></div></div>
       <div style="display:flex;gap:10px;align-items:center;margin-top:8px">
-        <span class="muted"><span id="elapsed">0:00</span> / <span>1:30</span> — ETA <span id="eta">1:30</span></span>
+        <span class="muted"><span id="elapsed">0:00</span> / 1:30 — ETA <span id="eta">1:30</span></span>
         <span class="muted" style="margin-left:auto">Audio: <span id="audState">paused</span></span>
       </div>
-      <div style="display:flex;gap:8px;margin-top:8px">
+      <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
         <button class="btn primary" id="playDsync">Play</button>
-        <button class="btn" id="restartDsync">Restart</button>
-        <button class="btn" id="muteBtn">Unmute</button>
-        <button class="btn" id="skipBtn">Skip</button>
+        <button class="btn ghost" id="restartDsync">Restart</button>
+        <button class="btn ghost" id="muteBtn">Unmute</button>
+        <button class="btn ghost" id="skipBtn">Skip</button>
       </div>
     </div>
 
-    <p id="lockBadge" class="pill warn" style="margin-top:10px">Locked</p>
-    <div style="margin-top:8px">
-      <button class="btn secondary" id="toConsent" disabled>Continue → Consent</button>
+    <div style="display:flex;align-items:center;gap:10px;margin-top:10px">
+      <span id="lockBadge" class="warn-pill">Locked</span>
+      <button class="btn ghost" id="toConsent" disabled>Continue → Consent</button>
     </div>
 
-    <!-- audio (local files in same folder) -->
     <audio id="bootSfx" src="./BOOT.wav" preload="auto"></audio>
     <audio id="dsync"   src="./DSYNC.mp3" preload="auto" loop></audio>
   </section>
 
-  <!-- Sterilization complete -->
-  <section id="sterileDone" class="panel-void" style="display:none;text-align:center">
-    <div class="check-big">✓</div>
-    <h2 style="margin:.6rem 0 0">Sterilization Complete</h2>
-    <p class="muted" style="margin:.25rem 0 1rem">Neural synchronization verified. Proceeding to assessment…</p>
+  <!-- STERILIZATION COMPLETE -->
+  <section id="sterileDone" class="void" style="display:none; text-align:center">
+    <div class="check">✓</div>
+    <h2 style="margin:.7rem 0 0">Sterilization Complete</h2>
+    <p class="muted" style="margin:.3rem 0 1rem">Neural synchronization verified. Proceeding to assessment…</p>
     <button class="btn primary" data-go="consent">Continue</button>
   </section>
 
   <!-- CONSENT -->
-  <section id="consent" class="panel-void" style="display:none">
-    <h2 class="title-amber">Welcome, Recruit.</h2>
+  <section id="consent" class="void" style="display:none">
+    <h2 class="h-amber" style="margin-top:0">Welcome, Recruit.</h2>
     <p class="muted">You are about to enter the S.O.L.E.M. Cognitive Calibration Environment. Participation is mandatory once initiated.</p>
-    <div class="card" style="margin-top:10px">
+
+    <div class="card" style="margin-top:12px">
       <p class="muted">By proceeding, you acknowledge the fictional nature of this portal and consent to simulated access gates. No data leaves your browser.</p>
-      <label style="display:flex;gap:8px;align-items:center;margin:.4rem 0"><input type="checkbox" id="ack21"> I affirm I am 21+.</label>
-      <label style="display:flex;gap:8px;align-items:center;margin:.4rem 0"><input type="checkbox" id="ackUnderstand"> I have read and understand the Agreement.</label>
-      <div style="display:flex;gap:8px;margin-top:8px">
+      <label class="row"><input type="checkbox" id="ack21"> I affirm I am 21+.</label>
+      <label class="row"><input type="checkbox" id="ackUnderstand"> I have read and understand the Agreement.</label>
+      <div style="display:flex;gap:10px;margin-top:8px">
         <button class="btn danger" id="decline">Decline</button>
         <button class="btn primary" id="accept" disabled>I CONSENT AND UNDERSTAND</button>
       </div>
-      <p class="muted" style="margin-top:6px"><span class="pill warn">Note</span> Declining bars future access until site data is cleared.</p>
+      <p class="muted" style="margin-top:6px"><span class="warn-pill">Note</span> Declining bars future access until site data is cleared.</p>
     </div>
   </section>
 
   <!-- ASSESSMENT -->
   <section id="assessment" style="display:none">
     <h2>Assessment Path Selection</h2>
-    <div class="grid cols-3">
-      <div class="card"><h3>Path Alpha — Cognitive Observer</h3><p class="muted">CDD-A (P) / TSE-B (S) / EPAS-E (T)</p><button class="btn" data-path="alpha">Select Alpha</button></div>
-      <div class="card"><h3>Path Beta — Temporal Analyst</h3><p class="muted">TSE-B (P) / PII-C (S) / CDD-A (T)</p><button class="btn" data-path="beta">Select Beta</button></div>
-      <div class="card"><h3>Path Gamma — Empathic Processor</h3><p class="muted">EPAS-E (P) / CDD-A (S) / TSE-B (T)</p><button class="btn" data-path="gamma">Select Gamma</button></div>
+    <div class="grid c3">
+      <div class="card"><h3>Path Alpha — Cognitive Observer</h3><p class="muted">CDD-A (P) / TSE-B (S) / EPAS-E (T)</p><button class="btn ghost" data-path="alpha">Select Path</button></div>
+      <div class="card"><h3>Path Beta — Temporal Analyst</h3><p class="muted">TSE-B (P) / PII-C (S) / CDD-A (T)</p><button class="btn ghost" data-path="beta">Select Path</button></div>
+      <div class="card"><h3>Path Gamma — Empathic Processor</h3><p class="muted">EPAS-E (P) / CDD-A (S) / TSE-B (T)</p><button class="btn ghost" data-path="gamma">Select Path</button></div>
     </div>
-    <div id="questionPane" class="card" style="margin-top:12px;display:none"></div>
+    <div id="questionPane" class="card" style="margin-top:14px;display:none"></div>
   </section>
 
   <!-- ARCHIVES -->
@@ -239,7 +252,7 @@
   <!-- STATS -->
   <section id="stats" style="display:none">
     <h2>Public Statistics</h2>
-    <div class="grid cols-3">
+    <div class="grid c3">
       <div class="card"><h3>Active Recruits</h3><div id="recruitCount">1,107</div></div>
       <div class="card"><h3>Geo Distribution</h3><div class="muted">Enable location &amp; submissions</div></div>
       <div class="card"><h3>Monthly Refresh</h3><p class="muted">Hiring stats refresh monthly.</p></div>
@@ -249,17 +262,17 @@
   <!-- COMMUNITY -->
   <section id="community" style="display:none">
     <h2>Community & Debates (21+)</h2>
-    <div class="card"><button class="btn" id="newThread">New Statement / Debate</button></div>
+    <div class="card"><button class="btn ghost" id="newThread">New Statement / Debate</button></div>
     <div id="threads" class="grid"></div>
   </section>
 
   <!-- TRANSFER -->
   <section id="transfer" style="display:none">
     <h2>Transfer Room — Ephemeral (5 min)</h2>
-    <div class="grid cols-3">
-      <div class="card"><h3>Status</h3><p>Presence: Active / Away / Inactive</p></div>
-      <div class="card"><h3>Create Link (G/P)</h3><input type="file" id="filePick"><button class="btn" id="shareFile">Generate Share</button><div id="shareOut" class="muted micro"></div></div>
-      <div class="card"><h3>Join Link</h3><input type="text" id="joinCode" placeholder="Paste code"><button class="btn" id="joinShare">Join</button><div id="shareIn" class="muted micro"></div></div>
+    <div class="grid c3">
+      <div class="card"><h3>Status</h3><p class="muted">Presence: Active / Away / Inactive</p></div>
+      <div class="card"><h3>Create Link (G/P)</h3><input type="file" id="filePick"><button class="btn ghost" id="shareFile">Generate Share</button><div id="shareOut" class="muted micro"></div></div>
+      <div class="card"><h3>Join Link</h3><input type="text" id="joinCode" placeholder="Paste code"><button class="btn ghost" id="joinShare">Join</button><div id="shareIn" class="muted micro"></div></div>
     </div>
   </section>
 
@@ -267,12 +280,12 @@
   <section id="profile" style="display:none">
     <h2>Profile</h2>
     <div class="card">
-      <label>Display Name <input id="handle"></label>
-      <label>Country <input id="country"></label>
-      <label>Province/State <input id="region"></label>
-      <label><input type="checkbox" id="publicProfile"> Public Profile (opt-in)</label>
-      <div style="display:flex;gap:8px;margin-top:8px">
-        <button class="btn" id="saveProfile">Save</button>
+      <label class="row">Display Name <input id="handle" type="text"></label>
+      <label class="row">Country <input id="country" type="text"></label>
+      <label class="row">Province/State <input id="region" type="text"></label>
+      <label class="row"><input type="checkbox" id="publicProfile"> Public Profile (opt-in)</label>
+      <div style="display:flex;gap:10px;margin-top:8px">
+        <button class="btn ghost" id="saveProfile">Save</button>
         <button class="btn danger" id="reset">Reset</button>
       </div>
     </div>
@@ -286,151 +299,119 @@
 
 <script>
 (function(){
-  const $  = (s,ctx=document)=>ctx.querySelector(s);
-  const $$ = (s,ctx=document)=>Array.from(ctx.querySelectorAll(s));
+  const $=(s,ctx=document)=>ctx.querySelector(s);
+  const $$=(s,ctx=document)=>Array.from(ctx.querySelectorAll(s));
 
-  // --- simple nav ---
+  // nav
   function show(id){
     $$('main > section').forEach(s=>s.style.display='none');
-    $('#'+id).style.display='';
+    const el = $('#'+id); if(el) el.style.display='';
     $$('header nav a').forEach(a=>a.classList.toggle('active', a.dataset.go===id));
   }
-  $$('header nav a, [data-go]').forEach(a=>{
-    a.addEventListener('click', e=>{ const to=a.dataset.go; if(to){ e.preventDefault(); show(to); }});
-  });
+  $$('header nav a,[data-go]').forEach(a=>a.addEventListener('click', e=>{
+    const to=a.dataset.go; if(to){ e.preventDefault(); show(to); }
+  }));
 
-  // mirror DSYNC/consent on home tiles
-  const syncHome = ()=>{ $('#homePct').textContent = (Number(localStorage.getItem('sol_dsync_pct'))||0) + '%';
-                         $('#homeConsent').textContent = localStorage.getItem('sol_consent')==='1' ? 'Yes':'No'; };
-
-  // --- audio refs ---
-  const aBoot = $('#bootSfx');
-  const aLoop = $('#dsync');
-  const audState = $('#audState');
-  let audioPrimed = false;
-
-  // prime audio on first pointer
-  const primeAudio = ()=> {
-    if(audioPrimed) return;
-    audioPrimed = true;
-    try{
-      aBoot.volume = .45; aBoot.currentTime = 0; aBoot.play().catch(()=>{});
-      aLoop.volume = .14; aLoop.play().catch(()=>{});
-      audState.textContent = 'playing';
-      $('#muteBtn').textContent='Mute';
-    }catch(e){}
-  };
-  document.addEventListener('pointerdown', primeAudio, { once:true });
-
-  // audio controls
+  // AUDIO
+  const aBoot=$('#bootSfx'), aLoop=$('#dsync'), audState=$('#audState');
+  let primed=false;
+  function prime(){ if(primed) return; primed=true;
+    aBoot.volume=.45; aBoot.currentTime=0; aBoot.play().catch(()=>{});
+    aLoop.volume=.14; aLoop.play().catch(()=>{});
+    audState.textContent='playing'; $('#muteBtn').textContent='Mute';
+  }
+  document.addEventListener('pointerdown', prime, {once:true});
   $('#muteBtn').addEventListener('click', ()=>{
     if(aLoop.paused || aLoop.muted){ aLoop.muted=false; aLoop.play().catch(()=>{}); audState.textContent='playing'; $('#muteBtn').textContent='Mute'; }
-    else { aLoop.muted=true; aLoop.pause(); audState.textContent='muted'; $('#muteBtn').textContent='Unmute'; }
+    else{ aLoop.muted=true; aLoop.pause(); audState.textContent='muted'; $('#muteBtn').textContent='Unmute'; }
   });
 
-  // --- DSYNC progress (mock 90s) ---
-  const bar = $('#dsBar'), elapsed=$('#elapsed'), eta=$('#eta'), toConsent=$('#toConsent');
+  // DSYNC
+  const bar=$('#dsBar'), elapsed=$('#elapsed'), eta=$('#eta'), toConsent=$('#toConsent');
   let pct = Number(localStorage.getItem('sol_dsync_pct')||0);
-  function fmt(s){ const m=Math.floor(s/60), ss=String(Math.floor(s%60)).padStart(2,'0'); return m+':'+ss; }
+  const fmt=s=>`${Math.floor(s/60)}:${String(Math.floor(s%60)).padStart(2,'0')}`;
   function renderDS(){
-    const p = Math.min(100, Math.max(0, pct|0));
-    bar.style.width = p + '%';
-    elapsed.textContent = fmt((p/100)*90);
-    eta.textContent = fmt(90 - (p/100)*90);
-    $('#lockBadge').textContent = p>=100 ? 'READY' : 'Locked';
-    toConsent.disabled = !(p>=100);
+    const p=Math.min(100,Math.max(0,pct|0));
+    bar.style.width=p+'%';
+    elapsed.textContent=fmt((p/100)*90);
+    eta.textContent=fmt(90-(p/100)*90);
+    $('#lockBadge').textContent=p>=100?'READY':'Locked';
+    toConsent.disabled=!(p>=100);
     localStorage.setItem('sol_dsync_pct', String(p));
-    syncHome();
   }
   $('#playDsync').addEventListener('click', ()=>{
-    primeAudio();
+    prime();
     if(pct>=100) return;
-    const t = setInterval(()=>{
-      pct += Math.random()*7 + 3;
+    const t=setInterval(()=>{
+      pct += Math.random()*7+3;
       if(pct>=100){ pct=100; clearInterval(t); $('#sterile').style.display='none'; $('#sterileDone').style.display=''; }
       renderDS();
-    }, 180);
+    },180);
   });
   $('#restartDsync').addEventListener('click', ()=>{ pct=0; renderDS(); });
   $('#skipBtn').addEventListener('click', ()=>{ pct=100; renderDS(); $('#sterile').style.display='none'; $('#sterileDone').style.display=''; });
   toConsent.addEventListener('click', ()=> show('consent'));
   renderDS();
 
-  // --- consent ---
-  function renderConsentBtn(){
-    $('#accept').disabled = !($('#ack21').checked && $('#ackUnderstand').checked);
-  }
-  $('#ack21').addEventListener('change', renderConsentBtn);
-  $('#ackUnderstand').addEventListener('change', renderConsentBtn);
-  $('#accept').addEventListener('click', ()=>{
-    localStorage.setItem('sol_consent','1');
-    syncHome();
-    show('assessment');
-  });
-  $('#decline').addEventListener('click', ()=>{
-    localStorage.setItem('sol_consent','0');
-    alert('Access declined. Clear site data to reset.');
-    syncHome();
-    show('home');
-  });
+  // consent
+  function updateAccept(){ $('#accept').disabled = !($('#ack21').checked && $('#ackUnderstand').checked); }
+  $('#ack21').addEventListener('change', updateAccept);
+  $('#ackUnderstand').addEventListener('change', updateAccept);
+  $('#accept').addEventListener('click', ()=>{ localStorage.setItem('sol_consent','1'); show('assessment'); });
+  $('#decline').addEventListener('click', ()=>{ localStorage.setItem('sol_consent','0'); alert('Access declined. Clear site data to reset.'); show('home'); });
 
-  // --- assessment mock ---
-  const pane = $('#questionPane');
-  $$('[data-path]').forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      const ok = (Number(localStorage.getItem('sol_dsync_pct')||0)>=100) && (localStorage.getItem('sol_consent')==='1');
-      if(!ok){ alert('Complete DSYNC and Consent first.'); return; }
-      pane.style.display='block';
-      const P = btn.dataset.path.toUpperCase();
-      pane.innerHTML = '<h3>'+P+' Path</h3>'
-        + '<p class="muted">Q1. Describe your earliest memory of a mirrored surface. (50–120 words)</p>'
-        + '<p class="muted">Q2. Define “Order is mastery of chaos” using a personal example. (50–120 words)</p>'
-        + '<p class="muted">Q3. Choose: CDD-A / TSE-B / EPAS-E — justify your weighting.</p>';
-    });
-  });
+  // assessment
+  const pane=$('#questionPane');
+  $$('[data-path]').forEach(b=>b.addEventListener('click', ()=>{
+    const ok=(Number(localStorage.getItem('sol_dsync_pct')||0)>=100) && (localStorage.getItem('sol_consent')==='1');
+    if(!ok){ alert('Complete DSYNC and Consent first.'); return; }
+    pane.style.display='block';
+    const P=b.dataset.path.toUpperCase();
+    pane.innerHTML = `<h3>${P} Path</h3>
+      <p class="muted">Q1. Describe your earliest memory of a mirrored surface. (50–120 words)</p>
+      <p class="muted">Q2. Define “Order is mastery of chaos” using a personal example. (50–120 words)</p>
+      <p class="muted">Q3. Choose: CDD-A / TSE-B / EPAS-E — justify your weighting.</p>`;
+  }));
 
-  // --- community (local only) ---
+  // community
   const threads = JSON.parse(localStorage.getItem('sol_threads')||'[]');
-  function renderThreads(){
-    const box = $('#threads'); box.innerHTML='';
-    threads.forEach(t=>{ const d=document.createElement('div'); d.className='card'; d.innerHTML='<strong>'+t.title+'</strong><p class="muted">'+t.body+'</p>'; box.appendChild(d); });
+  function renderThreads(){ const box=$('#threads'); box.innerHTML='';
+    threads.forEach(t=>{ const c=document.createElement('div'); c.className='card';
+      c.innerHTML=`<strong>${t.title}</strong><p class="muted">${t.body}</p>`; box.appendChild(c); });
   }
   $('#newThread').addEventListener('click', ()=>{
-    const ok = (Number(localStorage.getItem('sol_dsync_pct')||0)>=100) && (localStorage.getItem('sol_consent')==='1');
+    const ok=(Number(localStorage.getItem('sol_dsync_pct')||0)>=100) && (localStorage.getItem('sol_consent')==='1');
     if(!ok){ alert('Unlock access first.'); return; }
-    const title = prompt('Statement title?'); if(!title) return;
-    const body  = prompt('One-sentence position?'); if(body==null) return;
-    threads.unshift({title, body, ts: Date.now()});
-    localStorage.setItem('sol_threads', JSON.stringify(threads));
-    renderThreads();
-  });
-  renderThreads();
+    const title=prompt('Statement title?'); if(!title) return;
+    const body=prompt('One-sentence position?'); if(body==null) return;
+    threads.unshift({title,body,ts:Date.now()}); localStorage.setItem('sol_threads', JSON.stringify(threads)); renderThreads();
+  }); renderThreads();
 
-  // --- transfer (mock) ---
+  // transfer
   $('#shareFile').addEventListener('click', ()=>{
-    const code = Math.random().toString(36).slice(2,8).toUpperCase();
-    $('#shareOut').textContent = 'Share code: '+code+' (expires in 5m — not really)';
+    const code=Math.random().toString(36).slice(2,8).toUpperCase();
+    $('#shareOut').textContent='Share code: '+code+' (expires in 5m — not really)';
   });
   $('#joinShare').addEventListener('click', ()=>{
-    $('#shareIn').textContent = 'Joined link '+($('#joinCode').value || '??????')+' (mock)';
+    $('#shareIn').textContent='Joined '+($('#joinCode').value||'??????')+' (mock)';
   });
 
-  // --- profile ---
+  // profile
   $('#saveProfile').addEventListener('click', ()=>{
-    let id = localStorage.getItem('sol_id');
+    let id=localStorage.getItem('sol_id');
     if(!id || id==='Unassigned'){
-      const n = crypto.getRandomValues(new Uint32Array(2));
+      const n=crypto.getRandomValues(new Uint32Array(2));
       id = Array.from(n).map(v=>v.toString(16).padStart(8,'0')).join('-');
       localStorage.setItem('sol_id', id);
     }
-    const name = $('#handle').value || 'Recruit';
-    $('#recruitId').textContent = id + ' // ' + name;
+    const name=$('#handle').value||'Recruit';
+    $('#recruitId').textContent=id+' // '+name;
     alert('Saved locally.');
   });
   $('#reset').addEventListener('click', ()=>{ localStorage.clear(); location.reload(); });
 
-  // initial mirrors
-  syncHome();
+  // deep links
+  // start on sterile if user clicks CTA
 })();
 </script>
 </body>
