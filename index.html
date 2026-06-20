@@ -3,34 +3,181 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="S.O.L.E.M. — Civilian Continuity" />
+  <meta name="description" content="S.O.L.E.M. — Civilian Continuity Archive" />
   <title>S.O.L.E.M. — Civilian Continuity</title>
   <style>
+    * {
+      box-sizing: border-box;
+      border-radius: 0 !important;
+    }
+
     html,
     body {
       margin: 0;
       padding: 0;
-      width: 100%;
       min-height: 100%;
-      background: #d7a86a;
     }
 
     body {
-      background-image: url("./1900s%202.png");
-      background-position: top center;
-      background-repeat: no-repeat;
-      background-size: 100vw auto;
+      background: #d6a86a;
+      color: #20140d;
+      font-family: Verdana, Arial, Helvetica, sans-serif;
+      font-size: 12px;
       overflow-x: hidden;
     }
 
-    .wallpaper-scroll-space {
-      width: 100%;
-      height: calc(100vw * 1280 / 720);
+    a {
+      color: #0000ee;
+      text-decoration: underline;
+    }
+
+    a:visited {
+      color: #551a8b;
+    }
+
+    .wallpaper-page {
+      position: relative;
+      width: min(100vw, 720px);
+      aspect-ratio: 720 / 1280;
       min-height: 100vh;
+      margin: 0 auto;
+      background-image: url("./1900s%202.png");
+      background-position: top center;
+      background-repeat: no-repeat;
+      background-size: 100% auto;
+      image-rendering: auto;
+    }
+
+    .plain-nav {
+      position: absolute;
+      top: 128px;
+      left: 10px;
+      right: 10px;
+      color: #000;
+      font-size: clamp(9px, 1.6vw, 11px);
+      line-height: 1.2;
+      text-transform: uppercase;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .plain-nav a {
+      color: #000;
+      text-decoration: none;
+      margin-right: 5px;
+    }
+
+    .plain-nav a:hover,
+    .plain-nav a:focus {
+      color: #7a211b;
+      text-decoration: underline;
+    }
+
+    .civilian-note {
+      position: absolute;
+      top: 260px;
+      left: 44px;
+      right: 44px;
+      color: #2f1e13;
+      font-size: clamp(10px, 1.8vw, 13px);
+      line-height: 1.55;
+    }
+
+    .civilian-note h1 {
+      margin: 0 0 8px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: clamp(15px, 3.2vw, 22px);
+      font-weight: bold;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .civilian-note p {
+      max-width: 420px;
+      margin: 0 0 10px;
+    }
+
+    .old-table {
+      width: 100%;
+      max-width: 430px;
+      margin-top: 18px;
+      border-collapse: collapse;
+      background: transparent;
+      font-size: clamp(9px, 1.6vw, 11px);
+    }
+
+    .old-table th,
+    .old-table td {
+      border: 1px solid rgba(47, 30, 19, 0.55);
+      padding: 5px 6px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .old-table th {
+      background: rgba(112, 59, 32, 0.16);
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .small-print {
+      margin-top: 14px;
+      color: #60391f;
+      font-size: clamp(8px, 1.4vw, 10px);
+    }
+
+    @media (max-width: 460px) {
+      .civilian-note {
+        left: 24px;
+        right: 24px;
+      }
     }
   </style>
 </head>
 <body>
-  <main class="wallpaper-scroll-space" aria-label="S.O.L.E.M. civilian wallpaper"></main>
+  <main class="wallpaper-page" aria-label="S.O.L.E.M. civilian wallpaper page">
+    <nav class="plain-nav" aria-label="Civilian archive links">
+      <a href="#home">HOME</a>
+      <a href="#navigation">NAVIGATION</a>
+      <a href="#images">IMAGES</a>
+      <a href="#files">FILES</a>
+      <a href="#archives">ARCHIVES</a>
+    </nav>
+
+    <section id="home" class="civilian-note">
+      <h1>Civilian Content Only</h1>
+      <p>
+        This page is a plain civilian landing page for S.O.L.E.M. archive material.
+        Internal, technical, and restricted materials are not displayed here.
+      </p>
+
+      <table class="old-table" aria-label="Civilian archive status">
+        <tr>
+          <th>Section</th>
+          <th>Status</th>
+        </tr>
+        <tr>
+          <td>Navigation</td>
+          <td>Placeholder</td>
+        </tr>
+        <tr>
+          <td>Images</td>
+          <td>Pending</td>
+        </tr>
+        <tr>
+          <td>Files</td>
+          <td>Pending</td>
+        </tr>
+        <tr>
+          <td>Archives</td>
+          <td>Pending</td>
+        </tr>
+      </table>
+
+      <p class="small-print">
+        Last updated: 20XX // Civilian archive shell // no active terminal interface
+      </p>
+    </section>
+  </main>
 </body>
 </html>
