@@ -3,32 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="S.O.L.E.M. — Civilian Continuity Archive" />
-  <title>S.O.L.E.M. — Continuity Archive</title>
+  <meta name="description" content="S.O.L.E.M. — Civilian Continuity Archive 20XX" />
+  <title>S.O.L.E.M. — Civilian Continuity Archive</title>
   <style>
     :root {
-      --bg: #070503;
-      --ink: #f3eadc;
-      --muted: #cdbb9a;
-      --dim: #8d785d;
-      --sepia: #6b321e;
-      --sepia-dark: #35160d;
-      --gold: #d6a045;
-      --gold-soft: #f0c873;
-      --amber: #ffad32;
-      --wine: #8f2929;
-      --panel: rgba(18, 11, 7, 0.82);
-      --panel-soft: rgba(81, 39, 23, 0.72);
-      --line: rgba(246, 203, 126, 0.28);
-      --line-strong: rgba(246, 203, 126, 0.55);
-      --shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
-      --radius: 28px;
+      --black: #070503;
+      --deep: #140905;
+      --brown: #5a2817;
+      --brown-2: #7a3a20;
+      --sepia: #a86f3d;
+      --sand: #d7aa6c;
+      --paper: #f0dfbf;
+      --gold: #d8a23f;
+      --gold-2: #ffd984;
+      --wine: #8b2425;
+      --ink: #fff3dc;
+      --muted: #d6bd95;
+      --dim: #987d5e;
+      --line: rgba(255, 217, 132, 0.32);
+      --line-strong: rgba(255, 217, 132, 0.62);
+      --panel: rgba(18, 9, 5, 0.88);
+      --panel-2: rgba(71, 32, 18, 0.86);
       --mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      --sans: Helvetica, Arial, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
     * {
       box-sizing: border-box;
+      border-radius: 0 !important;
     }
 
     html {
@@ -41,9 +43,9 @@
       color: var(--ink);
       font-family: var(--sans);
       background:
-        linear-gradient(180deg, rgba(7, 5, 3, 0.74), rgba(7, 5, 3, 0.90)),
-        url("./1900s%202.png") center center / 460px auto repeat,
-        var(--bg);
+        linear-gradient(180deg, rgba(7, 5, 3, 0.58), rgba(7, 5, 3, 0.92) 58%, rgba(7, 5, 3, 0.98)),
+        url("./1900s%202.png") center top / cover no-repeat fixed,
+        var(--black);
       overflow-x: hidden;
     }
 
@@ -51,12 +53,12 @@
       content: "";
       position: fixed;
       inset: 0;
+      z-index: -1;
       pointer-events: none;
       background:
-        radial-gradient(circle at 20% 10%, rgba(255, 178, 68, 0.22), transparent 32%),
-        radial-gradient(circle at 82% 18%, rgba(143, 41, 41, 0.26), transparent 35%),
-        linear-gradient(90deg, rgba(0,0,0,0.38), transparent 30%, transparent 70%, rgba(0,0,0,0.44));
-      z-index: -1;
+        linear-gradient(90deg, rgba(0,0,0,0.56), transparent 24%, transparent 74%, rgba(0,0,0,0.66)),
+        repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 7px);
+      mix-blend-mode: normal;
     }
 
     a {
@@ -64,18 +66,24 @@
       text-decoration: none;
     }
 
-    .site-shell {
-      width: min(1180px, calc(100% - 32px));
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    .shell {
+      width: min(1160px, calc(100% - 32px));
       margin: 0 auto;
     }
 
     .topbar {
       position: sticky;
       top: 0;
-      z-index: 20;
+      z-index: 30;
       border-bottom: 1px solid var(--line);
-      background: rgba(7, 5, 3, 0.78);
-      backdrop-filter: blur(18px);
+      background: rgba(7, 5, 3, 0.86);
+      backdrop-filter: blur(12px);
     }
 
     .nav {
@@ -83,102 +91,106 @@
       align-items: center;
       justify-content: space-between;
       gap: 18px;
-      min-height: 76px;
+      min-height: 72px;
     }
 
     .brand {
-      display: flex;
+      display: grid;
+      grid-template-columns: 48px minmax(0, 1fr);
       align-items: center;
-      gap: 14px;
-      letter-spacing: 0.08em;
+      gap: 12px;
       text-transform: uppercase;
+      letter-spacing: 0.14em;
     }
 
     .brand-mark {
       display: grid;
       place-items: center;
-      width: 44px;
-      height: 44px;
+      width: 48px;
+      height: 48px;
       border: 1px solid var(--line-strong);
-      border-radius: 14px;
       background:
-        radial-gradient(circle, rgba(255, 218, 126, 0.35), transparent 46%),
-        rgba(109, 50, 27, 0.55);
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08), 0 12px 32px rgba(0,0,0,0.34);
-      font-size: 22px;
-      color: var(--gold-soft);
+        linear-gradient(135deg, rgba(255,217,132,0.32), rgba(90,40,23,0.88)),
+        rgba(0,0,0,0.28);
+      color: var(--gold-2);
+      font-size: 28px;
+      line-height: 1;
     }
 
-    .brand h1 {
+    .brand-title {
       margin: 0;
       font-size: 1rem;
-      line-height: 1.05;
+      line-height: 1;
     }
 
-    .brand span {
+    .brand-subtitle {
       display: block;
+      margin-top: 5px;
       color: var(--muted);
+      font-family: var(--mono);
       font-size: 0.68rem;
-      letter-spacing: 0.16em;
-      margin-top: 4px;
+      letter-spacing: 0.12em;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
       justify-content: flex-end;
+      gap: 0;
+      flex-wrap: wrap;
+      border-left: 1px solid var(--line);
     }
 
     .nav-links a {
-      border: 1px solid transparent;
-      border-radius: 999px;
+      border-top: 1px solid transparent;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid transparent;
+      padding: 12px 14px;
       color: var(--muted);
-      font-size: 0.86rem;
-      padding: 9px 13px;
-      transition: 180ms ease;
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
     .nav-links a:hover,
     .nav-links a:focus-visible {
       color: var(--ink);
-      border-color: var(--line);
-      background: rgba(255,255,255,0.06);
+      background: rgba(255, 217, 132, 0.1);
       outline: none;
     }
 
     .hero {
       display: grid;
-      grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
-      gap: 26px;
-      align-items: stretch;
-      padding: 66px 0 32px;
+      grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+      gap: 18px;
+      padding: 42px 0 26px;
     }
 
-    .hero-card,
-    .side-card,
-    .panel {
+    .card,
+    .panel,
+    .terminal,
+    .asset-card {
       border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(45, 21, 13, 0.88), rgba(12, 8, 5, 0.88));
-      box-shadow: var(--shadow);
+      background:
+        linear-gradient(180deg, rgba(54, 24, 13, 0.88), rgba(12, 7, 4, 0.92));
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.48);
+    }
+
+    .hero-main {
+      position: relative;
+      min-height: 620px;
+      padding: 28px;
       overflow: hidden;
     }
 
-    .hero-card {
-      position: relative;
-      min-height: 560px;
-      padding: 34px;
-    }
-
-    .hero-card::before {
+    .hero-main::before {
       content: "";
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(135deg, rgba(255, 173, 50, 0.14), transparent 38%),
-        linear-gradient(315deg, rgba(143, 41, 41, 0.18), transparent 42%);
+        linear-gradient(135deg, rgba(216, 162, 63, 0.17), transparent 34%),
+        linear-gradient(315deg, rgba(139, 36, 37, 0.20), transparent 46%);
       pointer-events: none;
     }
 
@@ -186,547 +198,726 @@
       position: relative;
       z-index: 1;
       display: flex;
-      min-height: 100%;
       flex-direction: column;
       justify-content: space-between;
-      gap: 46px;
+      gap: 54px;
+      min-height: 100%;
     }
 
     .status-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
+      align-items: stretch;
+      gap: 0;
+      border-left: 1px solid var(--line);
+      border-top: 1px solid var(--line);
+      width: fit-content;
     }
 
-    .pill {
+    .tag {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      width: fit-content;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: rgba(0, 0, 0, 0.22);
+      min-height: 36px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 8px 11px;
+      background: rgba(0, 0, 0, 0.25);
       color: var(--muted);
-      font-size: 0.78rem;
-      letter-spacing: 0.08em;
-      padding: 8px 12px;
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
     }
 
-    .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #70f28c;
-      box-shadow: 0 0 18px rgba(112, 242, 140, 0.76);
-    }
-
-    .hero-title {
-      max-width: 720px;
+    .tag strong {
+      color: var(--gold-2);
+      font-weight: 700;
     }
 
     .kicker {
-      margin: 0 0 12px;
-      color: var(--gold-soft);
+      margin: 0 0 14px;
+      color: var(--gold-2);
       font-family: var(--mono);
-      font-size: 0.86rem;
-      letter-spacing: 0.16em;
+      font-size: 0.83rem;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
     }
 
-    h2 {
+    .hero-title {
+      max-width: 800px;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
       margin: 0;
-      font-size: clamp(3.2rem, 8vw, 7.4rem);
-      line-height: 0.86;
-      letter-spacing: -0.07em;
+      font-size: clamp(4.1rem, 10vw, 9rem);
+      line-height: 0.82;
+      letter-spacing: -0.075em;
       text-transform: uppercase;
     }
 
     .year {
       display: block;
-      color: var(--gold-soft);
+      color: var(--gold-2);
       font-style: italic;
       letter-spacing: -0.04em;
     }
 
     .hero-copy {
-      max-width: 650px;
-      color: var(--muted);
-      font-size: clamp(1.03rem, 1.7vw, 1.25rem);
-      line-height: 1.75;
+      max-width: 690px;
       margin: 28px 0 0;
+      color: var(--paper);
+      font-size: clamp(1.05rem, 1.6vw, 1.26rem);
+      line-height: 1.7;
     }
 
-    .hero-actions {
+    .action-row {
       display: flex;
-      gap: 12px;
       flex-wrap: wrap;
+      gap: 0;
       margin-top: 28px;
+      border-left: 1px solid var(--line-strong);
+      border-top: 1px solid var(--line-strong);
+      width: fit-content;
     }
 
     .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 48px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
+      min-height: 50px;
+      border-right: 1px solid var(--line-strong);
+      border-bottom: 1px solid var(--line-strong);
       padding: 0 18px;
+      background: rgba(255, 217, 132, 0.08);
       color: var(--ink);
-      background: rgba(255, 255, 255, 0.06);
+      font-family: var(--mono);
       font-weight: 700;
-      transition: 180ms ease;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: 160ms ease;
     }
 
     .button.primary {
-      border-color: rgba(255, 202, 109, 0.58);
-      background: linear-gradient(135deg, rgba(255, 173, 50, 0.96), rgba(154, 81, 20, 0.96));
-      color: #1c1008;
+      background: linear-gradient(135deg, rgba(255, 217, 132, 0.98), rgba(216, 162, 63, 0.93));
+      color: #1b0d06;
     }
 
     .button:hover,
     .button:focus-visible {
-      transform: translateY(-2px);
+      background: rgba(255, 217, 132, 0.18);
       outline: none;
-      box-shadow: 0 14px 28px rgba(0,0,0,0.3);
+    }
+
+    .button.primary:hover,
+    .button.primary:focus-visible {
+      background: linear-gradient(135deg, rgba(255, 231, 160, 1), rgba(230, 175, 72, 1));
     }
 
     .archive-note {
       display: grid;
-      grid-template-columns: 1fr auto;
+      grid-template-columns: 1fr 116px;
       gap: 18px;
       align-items: end;
       border-top: 1px solid var(--line);
-      padding-top: 24px;
+      padding-top: 22px;
     }
 
     .archive-note p {
       margin: 0;
       color: var(--muted);
       font-family: var(--mono);
-      font-size: 0.86rem;
-      line-height: 1.7;
-    }
-
-    .sun-seal {
-      display: grid;
-      place-items: center;
-      width: 98px;
-      height: 98px;
-      border: 1px solid var(--line-strong);
-      border-radius: 30px;
-      background:
-        radial-gradient(circle at center, #ffe4a1 0 9%, #d79e32 10% 18%, transparent 19%),
-        conic-gradient(from 45deg, transparent 0 8%, rgba(255, 222, 136, 0.92) 8% 11%, transparent 11% 21%, rgba(255, 222, 136, 0.92) 21% 24%, transparent 24% 34%, rgba(255, 222, 136, 0.92) 34% 37%, transparent 37% 47%, rgba(255, 222, 136, 0.92) 47% 50%, transparent 50% 60%, rgba(255, 222, 136, 0.92) 60% 63%, transparent 63% 73%, rgba(255, 222, 136, 0.92) 73% 76%, transparent 76% 86%, rgba(255, 222, 136, 0.92) 86% 89%, transparent 89% 100%),
-        rgba(67, 30, 17, 0.78);
-      color: #fff1bd;
-      font-size: 30px;
-      box-shadow: inset 0 0 26px rgba(255, 216, 124, 0.24);
-    }
-
-    .side-card {
-      display: flex;
-      flex-direction: column;
-      min-height: 560px;
-    }
-
-    .tessellation-strip {
-      min-height: 145px;
-      background:
-        linear-gradient(90deg, rgba(0,0,0,0.1), rgba(0,0,0,0.14)),
-        url("./6%20by%204.png") center center / 360px auto repeat;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .terminal {
-      display: flex;
-      flex: 1;
-      flex-direction: column;
-      gap: 22px;
-      padding: 28px;
-      background: rgba(0,0,0,0.22);
-    }
-
-    .terminal h3,
-    .panel h3 {
-      margin: 0;
-      color: var(--gold-soft);
-      font-size: 1.14rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-
-    .terminal-line {
-      border-left: 2px solid var(--gold);
-      padding-left: 14px;
-      color: var(--muted);
-      font-family: var(--mono);
-      font-size: 0.87rem;
+      font-size: 0.84rem;
       line-height: 1.75;
     }
 
-    .signal-box {
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      padding: 18px;
-      background: rgba(255,255,255,0.045);
+    .seal {
+      display: grid;
+      place-items: center;
+      width: 116px;
+      aspect-ratio: 1;
+      border: 1px solid var(--line-strong);
+      background:
+        radial-gradient(circle, #fff0bd 0 8%, #d8a23f 9% 17%, transparent 18%),
+        conic-gradient(from 45deg, transparent 0 7%, rgba(255, 225, 142, 0.95) 7% 10%, transparent 10% 20%, rgba(255, 225, 142, 0.95) 20% 23%, transparent 23% 33%, rgba(255, 225, 142, 0.95) 33% 36%, transparent 36% 46%, rgba(255, 225, 142, 0.95) 46% 49%, transparent 49% 59%, rgba(255, 225, 142, 0.95) 59% 62%, transparent 62% 72%, rgba(255, 225, 142, 0.95) 72% 75%, transparent 75% 85%, rgba(255, 225, 142, 0.95) 85% 88%, transparent 88% 100%),
+        rgba(79, 34, 19, 0.82);
+      color: var(--gold-2);
+      font-size: 42px;
     }
 
-    .signal-box label {
-      display: block;
+    .terminal {
+      min-height: 620px;
+      display: flex;
+      flex-direction: column;
+      background: rgba(13, 7, 4, 0.88);
+    }
+
+    .terminal-image {
+      min-height: 230px;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.32)),
+        url("./civilian%201.png") center center / cover no-repeat;
+    }
+
+    .terminal-body {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      gap: 18px;
+      padding: 24px;
+    }
+
+    .terminal h2,
+    .section-heading h2,
+    .panel h3,
+    .asset-card h3 {
+      margin: 0;
+      color: var(--gold-2);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .terminal h2 {
+      font-size: 1.15rem;
+    }
+
+    .readout {
+      border-left: 3px solid var(--gold);
+      padding-left: 14px;
       color: var(--muted);
-      font-size: 0.82rem;
+      font-family: var(--mono);
+      font-size: 0.84rem;
+      line-height: 1.75;
+    }
+
+    .field {
+      display: grid;
+      gap: 10px;
+      border: 1px solid var(--line);
+      padding: 16px;
+      background: rgba(255,255,255,0.04);
+    }
+
+    label {
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 0.76rem;
       letter-spacing: 0.12em;
-      margin-bottom: 10px;
       text-transform: uppercase;
     }
 
-    .signal-box textarea {
+    textarea {
+      min-height: 118px;
       width: 100%;
-      min-height: 120px;
       resize: vertical;
       border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 14px;
+      padding: 12px;
       color: var(--ink);
-      background: rgba(0,0,0,0.35);
+      background: rgba(0,0,0,0.44);
       font-family: var(--sans);
       font-size: 1rem;
       outline: none;
     }
 
-    .signal-box textarea:focus {
+    textarea:focus {
       border-color: var(--line-strong);
-      box-shadow: 0 0 0 4px rgba(214, 160, 69, 0.13);
+      box-shadow: 0 0 0 3px rgba(216,162,63,0.15);
     }
 
-    .signal-result {
-      min-height: 54px;
-      margin-top: 12px;
+    .result {
+      min-height: 60px;
       color: var(--muted);
       font-family: var(--mono);
-      font-size: 0.85rem;
-      line-height: 1.6;
+      font-size: 0.82rem;
+      line-height: 1.65;
+    }
+
+    section {
+      scroll-margin-top: 96px;
     }
 
     .section {
-      padding: 34px 0;
+      padding: 28px 0;
     }
 
     .section-heading {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: 1fr minmax(260px, 430px);
       gap: 20px;
+      align-items: end;
       margin-bottom: 18px;
     }
 
     .section-heading h2 {
-      font-size: clamp(2rem, 4vw, 4.2rem);
-      line-height: 0.95;
+      font-size: clamp(2.2rem, 5vw, 4.7rem);
+      line-height: 0.92;
+      letter-spacing: -0.055em;
     }
 
     .section-heading p {
-      max-width: 500px;
       margin: 0;
       color: var(--muted);
       line-height: 1.7;
     }
 
-    .grid {
+    .grid-3 {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
+      gap: 14px;
     }
 
     .panel {
-      padding: 24px;
-      min-height: 230px;
+      min-height: 250px;
+      padding: 22px;
     }
 
-    .panel p {
-      color: var(--muted);
-      line-height: 1.65;
-      margin: 16px 0 0;
-    }
-
-    .panel .number {
+    .panel .number,
+    .asset-card .number {
+      display: block;
+      margin-bottom: 42px;
       color: var(--dim);
       font-family: var(--mono);
-      font-size: 0.78rem;
+      font-size: 0.74rem;
       letter-spacing: 0.16em;
-      margin-bottom: 42px;
       text-transform: uppercase;
     }
 
-    .wide-panel {
+    .panel h3,
+    .asset-card h3 {
+      font-size: 1.08rem;
+      line-height: 1.2;
+    }
+
+    .panel p,
+    .asset-card p {
+      margin: 14px 0 0;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .wide {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px;
-      padding: 28px;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+      gap: 14px;
+    }
+
+    .quote-panel {
+      padding: 26px;
+      background:
+        linear-gradient(180deg, rgba(84, 39, 23, 0.88), rgba(15, 8, 5, 0.92));
     }
 
     .quote {
       margin: 0;
       color: var(--ink);
-      font-size: clamp(1.55rem, 3vw, 3rem);
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      line-height: 1.02;
+      font-size: clamp(1.9rem, 4vw, 4.4rem);
+      font-weight: 900;
+      line-height: 0.95;
+      letter-spacing: -0.065em;
+      text-transform: uppercase;
     }
 
-    .archive-list {
+    .list {
       display: grid;
-      gap: 10px;
-      margin: 0;
+      gap: 0;
       padding: 0;
+      margin: 0;
       list-style: none;
+      border-left: 1px solid var(--line);
+      border-top: 1px solid var(--line);
     }
 
-    .archive-list li {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 12px 14px;
+    .list li {
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 14px;
       color: var(--muted);
-      background: rgba(255,255,255,0.04);
+      background: rgba(0,0,0,0.2);
       font-family: var(--mono);
-      font-size: 0.86rem;
+      font-size: 0.84rem;
+      line-height: 1.55;
     }
 
-    .audio-stack {
+    .assets {
       display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .asset-card {
+      overflow: hidden;
+      min-height: 100%;
+      background: rgba(14, 8, 5, 0.9);
+    }
+
+    .asset-card img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-bottom: 1px solid var(--line);
+      background: rgba(0,0,0,0.35);
+    }
+
+    .asset-card .asset-body {
+      padding: 16px;
+    }
+
+    .dossier-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .dossier-page {
+      border: 1px solid var(--line);
+      background: rgba(0,0,0,0.44);
+      overflow: hidden;
+    }
+
+    .dossier-page img {
+      width: 100%;
+      aspect-ratio: 8.5 / 11;
+      object-fit: cover;
+      object-position: top center;
+    }
+
+    .dossier-page figcaption {
+      border-top: 1px solid var(--line);
+      padding: 10px 12px;
+      color: var(--muted);
+      background: rgba(0,0,0,0.42);
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .audio-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 14px;
     }
 
     audio {
       width: 100%;
-      filter: sepia(0.3) saturate(0.85);
+      margin-top: 16px;
+      filter: sepia(0.35) saturate(0.85);
     }
 
     .footer {
+      margin-top: 36px;
       border-top: 1px solid var(--line);
-      margin-top: 34px;
-      padding: 28px 0 42px;
+      background: rgba(7, 5, 3, 0.86);
       color: var(--muted);
       font-family: var(--mono);
-      font-size: 0.82rem;
+      font-size: 0.78rem;
     }
 
     .footer-inner {
       display: flex;
       justify-content: space-between;
-      gap: 16px;
       flex-wrap: wrap;
+      gap: 14px;
+      padding: 28px 0 38px;
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 980px) {
       .hero,
-      .wide-panel {
+      .section-heading,
+      .wide,
+      .audio-grid {
         grid-template-columns: 1fr;
       }
 
-      .grid {
-        grid-template-columns: 1fr;
+      .grid-3,
+      .assets,
+      .dossier-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
-      .hero-card,
-      .side-card {
+      .hero-main,
+      .terminal {
         min-height: auto;
       }
-
-      .archive-note {
-        grid-template-columns: 1fr;
-      }
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 660px) {
+      body {
+        background-attachment: scroll;
+      }
+
       .nav {
-        align-items: flex-start;
+        align-items: stretch;
         flex-direction: column;
-        padding: 14px 0;
+        padding: 12px 0;
       }
 
       .nav-links {
         justify-content: flex-start;
       }
 
-      .hero-card,
-      .terminal,
-      .panel,
-      .wide-panel {
-        padding: 20px;
+      .hero {
+        padding-top: 24px;
       }
 
-      .hero {
-        padding-top: 34px;
+      .hero-main,
+      .terminal-body,
+      .panel,
+      .quote-panel {
+        padding: 18px;
+      }
+
+      .archive-note {
+        grid-template-columns: 1fr;
+      }
+
+      .grid-3,
+      .assets,
+      .dossier-grid {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: clamp(3.4rem, 18vw, 5rem);
       }
     }
   </style>
 </head>
 <body>
   <header class="topbar">
-    <nav class="site-shell nav" aria-label="Primary navigation">
+    <nav class="shell nav" aria-label="Civilian archive navigation">
       <a class="brand" href="#home" aria-label="S.O.L.E.M. home">
         <span class="brand-mark">☼</span>
         <span>
-          <h1>S.O.L.E.M.</h1>
-          <span>Civilian Continuity Archive</span>
+          <span class="brand-title">S.O.L.E.M.</span>
+          <span class="brand-subtitle">Civilian Continuity Archive</span>
         </span>
       </a>
-
       <div class="nav-links">
-        <a href="#home">Home</a>
-        <a href="#observe">Observe</a>
-        <a href="#archive">Archive</a>
+        <a href="#civilian">Civilian</a>
+        <a href="#root">R.O.O.T.</a>
+        <a href="#dossier">Dossier</a>
         <a href="#audio">Audio</a>
       </div>
     </nav>
   </header>
 
-  <main id="home" class="site-shell">
-    <section class="hero" aria-labelledby="hero-title">
-      <article class="hero-card">
+  <main id="home" class="shell">
+    <section class="hero" aria-labelledby="title">
+      <article class="card hero-main">
         <div class="hero-inner">
           <div>
-            <div class="status-row">
-              <span class="pill"><span class="dot"></span> Archive Status: Revised</span>
-              <span class="pill">Civilian Interface</span>
-              <span class="pill">20XX</span>
+            <div class="status-row" aria-label="Civilian archive status">
+              <span class="tag"><strong>Scope</strong>&nbsp;/ Civilian Only</span>
+              <span class="tag"><strong>Year</strong>&nbsp;/ 20XX</span>
+              <span class="tag"><strong>Seal</strong>&nbsp;/ ☼</span>
             </div>
 
             <div class="hero-title">
-              <p class="kicker">Sentient Observer Linked to Energy & Memory</p>
-              <h2 id="hero-title">S.O.L.E.M.<span class="year">20XX</span></h2>
+              <p class="kicker">Survey Outline Launch Encode Momentum</p>
+              <h1 id="title">S.O.L.E.M.<span class="year">20XX</span></h1>
               <p class="hero-copy">
-                An observational continuity archive concerned with memory, perception,
-                recurrence, and layered meaning. S.O.L.E.M. does not claim mastery over
-                memory. It documents what remains after observation.
+                This home page displays civilian-facing S.O.L.E.M. materials only: observation language,
+                continuity notes, R.O.O.T. reference structure, dossier previews, and recovered audio.
+                No restricted division material is disclosed here.
               </p>
-              <div class="hero-actions">
-                <a class="button primary" href="#observe">Begin Observation</a>
-                <a class="button" href="#archive">Open Archive</a>
+              <div class="action-row">
+                <a class="button primary" href="#civilian">Enter Civilian Archive</a>
+                <a class="button" href="#dossier">View Dossier Pages</a>
               </div>
             </div>
           </div>
 
           <div class="archive-note">
             <p>
-              ARCHIVE NOTE:<br />
-              Memory is not owned. It accumulates.<br />
-              Observation leaves structure behind.
+              CIVILIAN NOTICE:<br />
+              Observe first. Interpret second. Record what remains.<br />
+              The archive does not command. The archive remembers.
             </p>
-            <div class="sun-seal" aria-label="S.O.L.E.M. sun validation seal">☼</div>
+            <div class="seal" aria-label="S.O.L.E.M. civilian sun validation seal">☼</div>
           </div>
         </div>
       </article>
 
-      <aside class="side-card" aria-label="Continuity terminal">
-        <div class="tessellation-strip" role="img" aria-label="Civilian tessellation strip"></div>
-        <div class="terminal">
-          <h3>Continuity Terminal</h3>
-          <div class="terminal-line">
-            &gt; DISPLAY: CIVILIAN<br />
-            &gt; TESS: 1900S-2<br />
-            &gt; AUTHORITY: NONE<br />
-            &gt; OBSERVATION: ACTIVE<br />
-            &gt; SIGNAL: AWAITING INPUT
+      <aside class="terminal" aria-label="Civilian terminal">
+        <div class="terminal-image" role="img" aria-label="Civilian visual archive card"></div>
+        <div class="terminal-body">
+          <h2>Civilian Signal Terminal</h2>
+          <div class="readout">
+            &gt; DISPLAY MODE: CIVILIAN<br />
+            &gt; BACKGROUND: 1900S-2 WALLPAPER<br />
+            &gt; REFERENCE NODE: SHIELD-SEPIA<br />
+            &gt; ROOT SEQUENCE: DISPLAY ONLY<br />
+            &gt; ACCESS: OBSERVATION READY
           </div>
-
-          <div id="observe" class="signal-box">
-            <label for="signalInput">Sort the signal</label>
-            <textarea id="signalInput" placeholder="Type what is happening, what you noticed, or what feels unclear..."></textarea>
-            <button class="button primary" type="button" id="sortButton">Process Signal</button>
-            <div id="signalResult" class="signal-result" aria-live="polite">
-              Enter a signal. The archive will separate observation from interpretation.
+          <div class="field" id="observe">
+            <label for="signalInput">Observation Sort</label>
+            <textarea id="signalInput" placeholder="Type one observation, one uncertainty, or one next step..."></textarea>
+            <button class="button primary" id="sortButton" type="button">Process Civilian Signal</button>
+            <div class="result" id="signalResult" aria-live="polite">
+              Enter a signal. The civilian archive will separate observation from interpretation.
             </div>
           </div>
         </div>
       </aside>
     </section>
 
-    <section id="archive" class="section" aria-labelledby="archive-title">
+    <section id="civilian" class="section" aria-labelledby="civilian-title">
       <div class="section-heading">
-        <h2 id="archive-title">Archive Layers</h2>
+        <h2 id="civilian-title">Civilian Content</h2>
         <p>
-          The revised model treats S.O.L.E.M. as a framework for continuity-safe observation,
-          not a hierarchy, command system, or claim of control.
+          The visible archive is grounded, document-ready, and civilian-safe. It presents S.O.L.E.M. as
+          an observation framework instead of a command hierarchy.
         </p>
       </div>
-
-      <div class="grid">
+      <div class="grid-3">
         <article class="panel">
-          <div class="number">Layer 01</div>
+          <span class="number">Civilian 01</span>
           <h3>Observation Intake</h3>
-          <p>Sort what is known, unknown, felt, and recurring before choosing an action.</p>
+          <p>Collect what is known, unknown, repeated, and noticed before assigning meaning.</p>
         </article>
-
         <article class="panel">
-          <div class="number">Layer 02</div>
+          <span class="number">Civilian 02</span>
           <h3>Continuity Notes</h3>
-          <p>Track patterns, memory residue, symbolic returns, and layered perception events.</p>
+          <p>Track memory residue, recurring symbols, environmental cues, and practical next steps.</p>
         </article>
-
         <article class="panel">
-          <div class="number">Layer 03</div>
-          <h3>Civilian Materials</h3>
-          <p>Prepare grounded archive language for cards, dossiers, letters, and printed artifacts.</p>
+          <span class="number">Civilian 03</span>
+          <h3>Printed Artifacts</h3>
+          <p>Prepare archive cards, dossier pages, letterhead, and civilian packets for display.</p>
         </article>
       </div>
     </section>
 
-    <section class="section" aria-label="Continuity statement">
-      <article class="panel wide-panel">
-        <div>
-          <p class="kicker">Revised Continuity Model</p>
-          <p class="quote">Observe first. Interpret second. Act only when the signal is clear.</p>
-        </div>
-        <ul class="archive-list">
-          <li>☼ S.O.L.E.M. is an observational continuity archive.</li>
-          <li>☼ Memory is treated as accumulation, not ownership.</li>
-          <li>☼ Earlier hierarchy language is preserved only as historical residue.</li>
-          <li>☼ Civilian materials remain grounded, clear, and document-ready.</li>
-        </ul>
-      </article>
+    <section id="root" class="section" aria-labelledby="root-title">
+      <div class="wide">
+        <article class="panel quote-panel">
+          <p class="kicker">R.O.O.T. / Civilian Reference</p>
+          <p class="quote">The signal is sorted before the story is written.</p>
+        </article>
+        <article class="panel">
+          <span class="number">Reference Model</span>
+          <h3>R.O.O.T. Sequence</h3>
+          <p>Restricted Observation Output Token is presented here only as a civilian reference label.</p>
+          <ul class="list" style="margin-top: 18px;">
+            <li>☼ Rootlet: temporary Civilian Observer marker.</li>
+            <li>☼ SHIELD-SEPIA: civilian reference node.</li>
+            <li>☼ TITAN: cycle closing marker.</li>
+            <li>☼ Because Memory Is a Choice™</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="assets-title">
+      <div class="section-heading">
+        <h2 id="assets-title">Civilian Assets</h2>
+        <p>Visible materials already in the repository can be previewed directly from the home page.</p>
+      </div>
+      <div class="assets">
+        <article class="asset-card">
+          <img src="./civilian%201.png" alt="Civilian archive visual one" />
+          <div class="asset-body">
+            <span class="number">Asset 01</span>
+            <h3>Civilian Sheet I</h3>
+            <p>Primary civilian display material.</p>
+          </div>
+        </article>
+        <article class="asset-card">
+          <img src="./civilian%202.png" alt="Civilian archive visual two" />
+          <div class="asset-body">
+            <span class="number">Asset 02</span>
+            <h3>Civilian Sheet II</h3>
+            <p>Secondary civilian display material.</p>
+          </div>
+        </article>
+        <article class="asset-card">
+          <img src="./civilian%20icon.png" alt="Civilian S.O.L.E.M. icon" />
+          <div class="asset-body">
+            <span class="number">Asset 03</span>
+            <h3>Civilian Icon</h3>
+            <p>Program mark for civilian pages.</p>
+          </div>
+        </article>
+        <article class="asset-card">
+          <img src="./gold%20icon.png" alt="Gold sun icon" />
+          <div class="asset-body">
+            <span class="number">Asset 04</span>
+            <h3>Sun Seal</h3>
+            <p>Gold validation mark for archive presentation.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="dossier" class="section" aria-labelledby="dossier-title">
+      <div class="section-heading">
+        <h2 id="dossier-title">Civilian Dossier</h2>
+        <p>Six recovered dossier pages are displayed as a visual-only civilian packet preview.</p>
+      </div>
+      <div class="dossier-grid">
+        <figure class="dossier-page">
+          <img src="./CIVILIAN_DOSSIER_Page_1.jpg" alt="Civilian dossier page 1" />
+          <figcaption>Page 01 / Civilian Dossier</figcaption>
+        </figure>
+        <figure class="dossier-page">
+          <img src="./CIVILIAN_DOSSIER_Page_2.jpg" alt="Civilian dossier page 2" />
+          <figcaption>Page 02 / Civilian Dossier</figcaption>
+        </figure>
+        <figure class="dossier-page">
+          <img src="./CIVILIAN_DOSSIER_Page_3.jpg" alt="Civilian dossier page 3" />
+          <figcaption>Page 03 / Civilian Dossier</figcaption>
+        </figure>
+        <figure class="dossier-page">
+          <img src="./CIVILIAN_DOSSIER_Page_4.jpg" alt="Civilian dossier page 4" />
+          <figcaption>Page 04 / Civilian Dossier</figcaption>
+        </figure>
+        <figure class="dossier-page">
+          <img src="./CIVILIAN_DOSSIER_Page_5.jpg" alt="Civilian dossier page 5" />
+          <figcaption>Page 05 / Civilian Dossier</figcaption>
+        </figure>
+        <figure class="dossier-page">
+          <img src="./CIVILIAN_DOSSIER_Page_6.jpg" alt="Civilian dossier page 6" />
+          <figcaption>Page 06 / Civilian Dossier</figcaption>
+        </figure>
+      </div>
     </section>
 
     <section id="audio" class="section" aria-labelledby="audio-title">
       <div class="section-heading">
-        <h2 id="audio-title">Audio Host</h2>
-        <p>Legacy audio remains available as recovered signal material.</p>
+        <h2 id="audio-title">Civilian Audio Host</h2>
+        <p>Recovered audio remains attached to the archive as boot and async signal material.</p>
       </div>
-
-      <div class="grid audio-stack">
+      <div class="audio-grid">
         <article class="panel">
-          <div class="number">BOOT.WAV</div>
+          <span class="number">BOOT.WAV</span>
           <h3>Boot Signal</h3>
-          <p>Initial terminal audio.</p>
+          <p>Initial terminal audio for the civilian continuity archive.</p>
           <audio controls preload="metadata" src="./BOOT.wav"></audio>
         </article>
-
         <article class="panel">
-          <div class="number">DSYNC.MP3</div>
+          <span class="number">DSYNC.MP3</span>
           <h3>Async Loop</h3>
-          <p>Continuity loop audio.</p>
+          <p>Loop audio retained as recovered signal material.</p>
           <audio controls preload="metadata" src="./DSYNC.mp3"></audio>
-        </article>
-
-        <article class="panel">
-          <div class="number">CIVILIAN TESS</div>
-          <h3>1900S-2</h3>
-          <p>Current visible background: civilian tessellation layer applied across the archive.</p>
         </article>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <div class="site-shell footer-inner">
+    <div class="shell footer-inner">
       <span>S.O.L.E.M. // Civilian Continuity Archive // 20XX</span>
-      <span>Because Memory Is a Choice™</span>
+      <span>☼ Because Memory Is a Choice™</span>
     </div>
   </footer>
 
@@ -737,20 +928,20 @@
 
     function processSignal() {
       const value = input.value.trim();
+
       if (!value) {
         result.textContent = 'No signal entered. Begin with one sentence: what is happening right now?';
         return;
       }
 
-      const wordCount = value.split(/\s+/).filter(Boolean).length;
-      let intensity = 'low';
-      if (wordCount > 18) intensity = 'moderate';
-      if (wordCount > 45) intensity = 'dense';
+      const words = value.split(/\s+/).filter(Boolean).length;
+      const density = words > 48 ? 'dense' : words > 20 ? 'moderate' : 'clear';
 
       result.innerHTML = `
-        &gt; SIGNAL RECEIVED: ${wordCount} words / ${intensity} density.<br>
-        &gt; FIRST SORT: identify one known fact, one uncertain point, and one next step.<br>
-        &gt; OBSERVE FIRST. INTERPRET SECOND.
+        &gt; CIVILIAN SIGNAL RECEIVED: ${words} words / ${density} density.<br>
+        &gt; SORT ONE: name one observed fact.<br>
+        &gt; SORT TWO: name one uncertain point.<br>
+        &gt; SORT THREE: choose one grounded next step.
       `;
     }
 
