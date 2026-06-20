@@ -1,183 +1,346 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="S.O.L.E.M. — Civilian Continuity Archive" />
-  <title>S.O.L.E.M. — Civilian Continuity</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>S.O.L.E.M. — Civilian Continuity Archive</title>
+  <meta name="description" content="S.O.L.E.M. civilian archive landing page. Civilian content only.">
+
   <style>
     * {
       box-sizing: border-box;
       border-radius: 0 !important;
     }
 
-    html,
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      padding: 0;
-      min-height: 100%;
-    }
-
-    body {
-      background: #d6a86a;
-      color: #20140d;
-      font-family: Verdana, Arial, Helvetica, sans-serif;
-      font-size: 12px;
-      overflow-x: hidden;
-    }
-
-    a {
-      color: #0000ee;
-      text-decoration: underline;
-    }
-
-    a:visited {
-      color: #551a8b;
-    }
-
-    .wallpaper-page {
-      position: relative;
-      width: min(100vw, 720px);
-      aspect-ratio: 720 / 1280;
       min-height: 100vh;
+      background: #d8aa6d;
+      color: #111;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .page {
+      width: 720px;
+      max-width: 100%;
+      min-height: 2600px;
       margin: 0 auto;
       background-image: url("./1900s%202.png");
-      background-position: top center;
       background-repeat: no-repeat;
-      background-size: 100% auto;
-      image-rendering: auto;
+      background-position: top center;
+      background-size: 720px auto;
+      background-color: #d8aa6d;
     }
 
-    .plain-nav {
-      position: absolute;
-      top: 128px;
-      left: 10px;
-      right: 10px;
-      color: #000;
-      font-size: clamp(9px, 1.6vw, 11px);
-      line-height: 1.2;
+    .content {
+      padding: 268px 44px 60px;
+    }
+
+    nav {
+      margin: 0 0 34px;
+      padding: 8px 0;
+      font-size: 12px;
       text-transform: uppercase;
-      white-space: nowrap;
-      overflow: hidden;
+      letter-spacing: 0.02em;
+      border-top: 1px solid rgba(0,0,0,0.35);
+      border-bottom: 1px solid rgba(0,0,0,0.35);
     }
 
-    .plain-nav a {
+    nav a {
       color: #000;
-      text-decoration: none;
-      margin-right: 5px;
-    }
-
-    .plain-nav a:hover,
-    .plain-nav a:focus {
-      color: #7a211b;
       text-decoration: underline;
+      margin-right: 14px;
     }
 
-    .civilian-note {
-      position: absolute;
-      top: 260px;
-      left: 44px;
-      right: 44px;
-      color: #2f1e13;
-      font-size: clamp(10px, 1.8vw, 13px);
-      line-height: 1.55;
-    }
-
-    .civilian-note h1 {
+    h1 {
       margin: 0 0 8px;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: clamp(15px, 3.2vw, 22px);
-      font-weight: bold;
+      font-size: 26px;
+      line-height: 1.05;
       letter-spacing: 0.04em;
       text-transform: uppercase;
     }
 
-    .civilian-note p {
-      max-width: 420px;
-      margin: 0 0 10px;
+    h2 {
+      margin: 42px 0 10px;
+      font-size: 18px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(0,0,0,0.45);
+      padding-bottom: 4px;
     }
 
-    .old-table {
-      width: 100%;
-      max-width: 430px;
-      margin-top: 18px;
+    h3 {
+      margin: 22px 0 6px;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    p {
+      max-width: 540px;
+      margin: 0 0 12px;
+    }
+
+    .small {
+      font-size: 11px;
+      letter-spacing: 0.03em;
+    }
+
+    .notice {
+      width: 430px;
+      max-width: 100%;
+      margin-bottom: 22px;
+    }
+
+    table {
+      width: 430px;
+      max-width: 100%;
       border-collapse: collapse;
-      background: transparent;
-      font-size: clamp(9px, 1.6vw, 11px);
+      margin: 14px 0 6px;
+      background: rgba(221, 175, 111, 0.48);
     }
 
-    .old-table th,
-    .old-table td {
-      border: 1px solid rgba(47, 30, 19, 0.55);
-      padding: 5px 6px;
+    th,
+    td {
+      border: 1px solid rgba(0,0,0,0.45);
+      padding: 6px 7px;
       text-align: left;
       vertical-align: top;
     }
 
-    .old-table th {
-      background: rgba(112, 59, 32, 0.16);
-      font-weight: bold;
+    th {
+      font-size: 12px;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
+      background: rgba(121, 69, 35, 0.18);
     }
 
-    .small-print {
-      margin-top: 14px;
-      color: #60391f;
-      font-size: clamp(8px, 1.4vw, 10px);
+    ul {
+      margin-top: 8px;
+      padding-left: 18px;
     }
 
-    @media (max-width: 460px) {
-      .civilian-note {
-        left: 24px;
-        right: 24px;
+    li {
+      margin-bottom: 5px;
+    }
+
+    .file-list a {
+      color: #000;
+      text-decoration: underline;
+    }
+
+    .dossier-page {
+      margin: 18px 0 30px;
+      width: 100%;
+      max-width: 620px;
+      border: 1px solid rgba(0,0,0,0.55);
+      background: rgba(255,255,255,0.25);
+    }
+
+    .dossier-page img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .caption {
+      padding: 6px 8px;
+      border-top: 1px solid rgba(0,0,0,0.45);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      background: rgba(221, 175, 111, 0.5);
+    }
+
+    audio {
+      display: block;
+      width: 430px;
+      max-width: 100%;
+      margin: 8px 0 18px;
+    }
+
+    footer {
+      margin-top: 44px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(0,0,0,0.45);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    @media (max-width: 760px) {
+      .page {
+        width: 100%;
+        background-size: 100% auto;
+      }
+
+      .content {
+        padding-left: 22px;
+        padding-right: 22px;
+      }
+
+      nav a {
+        display: inline-block;
+        margin-bottom: 4px;
       }
     }
   </style>
 </head>
+
 <body>
-  <main class="wallpaper-page" aria-label="S.O.L.E.M. civilian wallpaper page">
-    <nav class="plain-nav" aria-label="Civilian archive links">
-      <a href="#home">HOME</a>
-      <a href="#navigation">NAVIGATION</a>
-      <a href="#images">IMAGES</a>
-      <a href="#files">FILES</a>
-      <a href="#archives">ARCHIVES</a>
-    </nav>
+  <div class="page">
+    <main class="content">
+      <nav aria-label="Civilian archive navigation">
+        <a href="#home">Home</a>
+        <a href="#files">Files</a>
+        <a href="#dossier">Dossier</a>
+        <a href="#images">Images</a>
+        <a href="#audio">Audio</a>
+      </nav>
 
-    <section id="home" class="civilian-note">
-      <h1>Civilian Content Only</h1>
-      <p>
-        This page is a plain civilian landing page for S.O.L.E.M. archive material.
-        Internal, technical, and restricted materials are not displayed here.
-      </p>
+      <section id="home" class="notice">
+        <h1>Civilian Content Only</h1>
+        <p>
+          This page is a plain civilian landing page for S.O.L.E.M. archive material.
+          Internal, technical, and restricted materials are not displayed here.
+        </p>
 
-      <table class="old-table" aria-label="Civilian archive status">
-        <tr>
-          <th>Section</th>
-          <th>Status</th>
-        </tr>
-        <tr>
-          <td>Navigation</td>
-          <td>Placeholder</td>
-        </tr>
-        <tr>
-          <td>Images</td>
-          <td>Pending</td>
-        </tr>
-        <tr>
-          <td>Files</td>
-          <td>Pending</td>
-        </tr>
-        <tr>
-          <td>Archives</td>
-          <td>Pending</td>
-        </tr>
-      </table>
+        <table>
+          <tr>
+            <th>Section</th>
+            <th>Status</th>
+          </tr>
+          <tr>
+            <td>Navigation</td>
+            <td>Active</td>
+          </tr>
+          <tr>
+            <td>Images</td>
+            <td>Available</td>
+          </tr>
+          <tr>
+            <td>Files</td>
+            <td>Listed</td>
+          </tr>
+          <tr>
+            <td>Archives</td>
+            <td>Displayed Below</td>
+          </tr>
+        </table>
 
-      <p class="small-print">
-        Last updated: 20XX // Civilian archive shell // no active terminal interface
-      </p>
-    </section>
-  </main>
+        <p class="small">Last updated: 20XX // Civilian archive shell // no active terminal interface</p>
+      </section>
+
+      <section id="files">
+        <h2>Files</h2>
+        <p>Available civilian-facing files currently placed in this archive directory.</p>
+
+        <ul class="file-list">
+          <li><a href="./CIVILIAN_DOSSIER_Page_1.jpg">CIVILIAN_DOSSIER_Page_1.jpg</a></li>
+          <li><a href="./CIVILIAN_DOSSIER_Page_2.jpg">CIVILIAN_DOSSIER_Page_2.jpg</a></li>
+          <li><a href="./CIVILIAN_DOSSIER_Page_3.jpg">CIVILIAN_DOSSIER_Page_3.jpg</a></li>
+          <li><a href="./CIVILIAN_DOSSIER_Page_4.jpg">CIVILIAN_DOSSIER_Page_4.jpg</a></li>
+          <li><a href="./CIVILIAN_DOSSIER_Page_5.jpg">CIVILIAN_DOSSIER_Page_5.jpg</a></li>
+          <li><a href="./CIVILIAN_DOSSIER_Page_6.jpg">CIVILIAN_DOSSIER_Page_6.jpg</a></li>
+          <li><a href="./civilian%201.png">civilian 1.png</a></li>
+          <li><a href="./civilian%202.png">civilian 2.png</a></li>
+          <li><a href="./civilian%20icon.png">civilian icon.png</a></li>
+          <li><a href="./gold%20icon.png">gold icon.png</a></li>
+          <li><a href="./BOOT.wav">BOOT.wav</a></li>
+          <li><a href="./DSYNC.mp3">DSYNC.mp3</a></li>
+        </ul>
+      </section>
+
+      <section id="dossier">
+        <h2>Civilian Dossier</h2>
+        <p>
+          The following pages are displayed as direct archive images. This is intentionally plain:
+          no viewer, no terminal simulation, no hidden interface.
+        </p>
+
+        <article class="dossier-page">
+          <img src="./CIVILIAN_DOSSIER_Page_1.jpg" alt="Civilian dossier page 1">
+          <div class="caption">Civilian Dossier // Page 1</div>
+        </article>
+
+        <article class="dossier-page">
+          <img src="./CIVILIAN_DOSSIER_Page_2.jpg" alt="Civilian dossier page 2">
+          <div class="caption">Civilian Dossier // Page 2</div>
+        </article>
+
+        <article class="dossier-page">
+          <img src="./CIVILIAN_DOSSIER_Page_3.jpg" alt="Civilian dossier page 3">
+          <div class="caption">Civilian Dossier // Page 3</div>
+        </article>
+
+        <article class="dossier-page">
+          <img src="./CIVILIAN_DOSSIER_Page_4.jpg" alt="Civilian dossier page 4">
+          <div class="caption">Civilian Dossier // Page 4</div>
+        </article>
+
+        <article class="dossier-page">
+          <img src="./CIVILIAN_DOSSIER_Page_5.jpg" alt="Civilian dossier page 5">
+          <div class="caption">Civilian Dossier // Page 5</div>
+        </article>
+
+        <article class="dossier-page">
+          <img src="./CIVILIAN_DOSSIER_Page_6.jpg" alt="Civilian dossier page 6">
+          <div class="caption">Civilian Dossier // Page 6</div>
+        </article>
+      </section>
+
+      <section id="images">
+        <h2>Images</h2>
+        <p>Current civilian graphics and icons are available as direct files.</p>
+
+        <table>
+          <tr>
+            <th>Item</th>
+            <th>Use</th>
+          </tr>
+          <tr>
+            <td>civilian 1.png</td>
+            <td>Civilian graphic asset</td>
+          </tr>
+          <tr>
+            <td>civilian 2.png</td>
+            <td>Civilian graphic asset</td>
+          </tr>
+          <tr>
+            <td>civilian icon.png</td>
+            <td>Civilian icon</td>
+          </tr>
+          <tr>
+            <td>gold icon.png</td>
+            <td>Gold icon</td>
+          </tr>
+          <tr>
+            <td>1900s 2.png</td>
+            <td>Website base wallpaper</td>
+          </tr>
+        </table>
+      </section>
+
+      <section id="audio">
+        <h2>Audio</h2>
+
+        <h3>BOOT.wav</h3>
+        <audio controls preload="metadata" src="./BOOT.wav"></audio>
+
+        <h3>DSYNC.mp3</h3>
+        <audio controls preload="metadata" src="./DSYNC.mp3"></audio>
+      </section>
+
+      <footer>
+        S.O.L.E.M. Civilian Archive // Because Memory Is a Choice // 20XX
+      </footer>
+    </main>
+  </div>
 </body>
 </html>
