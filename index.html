@@ -5,26 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>S.O.L.E.M. - Civilian Continuity Archive</title>
-  <meta
-    name="description"
-    content="S.O.L.E.M. civilian continuity archive landing page with dossier images, archive assets, and Ghostwire audio access."
-  />
 
   <style>
-    :root {
-      --sans: Helvetica, Arial, sans-serif;
+    * {
+      box-sizing: border-box;
     }
 
     body {
       margin: 0;
-      font-family: var(--sans);
+      font-family: Helvetica, Arial, sans-serif;
       font-style: italic;
-      text-align: left;
+      color: #f2dfbd;
       background:
-        linear-gradient(rgba(5, 6, 9, 0.82), rgba(5, 6, 9, 0.92)),
-        url("./1900s%202.png") top left / min(100%, 760px) auto no-repeat,
-        radial-gradient(circle at 0% 0%, rgba(227, 180, 93, 0.16), transparent 30rem),
-        linear-gradient(180deg, #050609 0%, #101015 48%, #040404 100%);
+        linear-gradient(rgba(55, 24, 12, 0.78), rgba(28, 12, 6, 0.94)),
+        url("./1900s%202.png") top left / 760px auto no-repeat,
+        #2c140b;
+      text-align: left;
+      line-height: 1.6;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    a {
+      color: inherit;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
     }
 
     h1,
@@ -32,33 +41,34 @@
     h3,
     strong,
     .brand-title,
-    .caption,
-    .chip,
-    .button,
-    .status-list strong,
-    .file-list a,
     .date,
-    footer {
+    .caption,
+    nav a,
+    .button {
       font-weight: 800;
     }
 
     h1,
     h2,
     h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1,
+    h2,
+    h3,
     .brand,
-    .brand-subtitle,
-    .eyebrow,
-    .button,
     .caption,
-    .card h3 {
+    .button,
+    .card {
       text-align: left;
     }
 
+    p,
     .lead,
     .section-note,
-    .card,
-    .archive-note,
-    footer {
+    .archive-note {
       text-align: justify;
       text-align-last: left;
     }
@@ -70,52 +80,310 @@
       margin-right: auto;
     }
 
-    nav {
-      justify-content: flex-end;
-      text-align: right;
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid rgba(242, 223, 189, 0.25);
+      background: rgba(77, 34, 17, 0.94);
     }
 
-    .button-row,
-    .eyebrow {
-      justify-content: flex-start;
+    .topbar-inner {
+      min-height: 88px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 12px 0;
     }
 
-    .button {
-      justify-content: flex-start;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+
+    .brand img {
+      width: 58px;
+    }
+
+    .brand-title {
+      margin: 0;
+      color: #fff1d0;
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    .brand-subtitle {
+      margin: 4px 0 0;
+      color: #d5bb8e;
+      font-size: 14px;
       text-align: left;
     }
 
-    .sun-seal {
-      margin: 0;
-    }
-
-    .status-card {
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 12px;
       text-align: right;
     }
 
-    .status-card-inner {
-      justify-items: end;
+    nav a {
+      text-transform: uppercase;
+      text-decoration: none;
     }
 
-    .asset-card .image-wrap {
+    nav a:hover {
+      color: #f4c342;
+    }
+
+    section {
+      padding: 70px 0 0;
+    }
+
+    .hero {
+      min-height: calc(100vh - 88px);
+      display: grid;
+      align-items: center;
+      padding-top: 64px;
+      padding-bottom: 64px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 320px;
+      gap: 48px;
+      align-items: start;
+    }
+
+    h1 {
+      max-width: 640px;
+      color: #fff1d0;
+      font-size: clamp(48px, 8vw, 104px);
+      line-height: 0.9;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      color: #fff1d0;
+      font-size: clamp(32px, 4vw, 54px);
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    h3 {
+      color: #fff1d0;
+      font-size: 18px;
+      text-transform: uppercase;
+    }
+
+    .accent {
+      color: #f4c342;
+    }
+
+    .lead {
+      max-width: 680px;
+      font-size: 21px;
+    }
+
+    .button-row {
       display: flex;
-      align-items: stretch;
+      flex-wrap: wrap;
       justify-content: flex-start;
+      gap: 12px;
+    }
+
+    .button {
+      display: inline-flex;
+      justify-content: flex-start;
+      align-items: center;
+      min-height: 48px;
+      padding: 12px 18px;
+      border: 1px solid rgba(242, 223, 189, 0.3);
+      text-transform: uppercase;
+      text-decoration: none;
+      background: rgba(77, 34, 17, 0.82);
+    }
+
+    .button.primary {
+      color: #261107;
+      background: #f4c342;
+      border-color: #f4c342;
+    }
+
+    .status-card,
+    .card,
+    .archive-note,
+    .file-list,
+    .image-card {
+      border: 1px solid rgba(242, 223, 189, 0.25);
+      background: rgba(22, 12, 8, 0.78);
+    }
+
+    .status-card {
+      padding: 18px;
+      text-align: right;
+    }
+
+    .status-card img {
+      width: 190px;
+      margin-left: auto;
+      margin-right: 0;
+    }
+
+    .status-list {
+      margin: 20px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .status-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 8px 0;
+      border-top: 1px solid rgba(242, 223, 189, 0.2);
+      color: #d5bb8e;
+    }
+
+    .status-list strong {
+      color: #fff1d0;
+      text-align: right;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 320px minmax(0, 1fr);
+      gap: 24px;
+      align-items: start;
+      padding-top: 20px;
+      border-top: 1px solid rgba(242, 223, 189, 0.25);
+      margin-bottom: 24px;
+    }
+
+    .section-note {
+      color: #d5bb8e;
+    }
+
+    .grid,
+    .audio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .audio-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .card {
+      padding: 18px;
+    }
+
+    audio {
+      width: 100%;
+      margin-top: 8px;
+    }
+
+    .file-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .file-list li {
+      border-bottom: 1px solid rgba(242, 223, 189, 0.2);
+    }
+
+    .file-list li:nth-child(odd) {
+      border-right: 1px solid rgba(242, 223, 189, 0.2);
+    }
+
+    .file-list a {
+      display: block;
+      padding: 14px 18px;
+      text-align: left;
+      overflow-wrap: anywhere;
+    }
+
+    .image-grid,
+    .dossier-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .image-card {
+      overflow: hidden;
+    }
+
+    .image-card img {
+      width: 100%;
+      object-fit: cover;
+      background: rgba(95, 48, 26, 0.55);
+    }
+
+    .caption {
+      padding: 12px 16px;
+      border-top: 1px solid rgba(242, 223, 189, 0.25);
+      color: #fff1d0;
+      text-transform: uppercase;
+      text-align: left;
+    }
+
+    .archive-note {
+      padding: 18px;
+      color: #d5bb8e;
+    }
+
+    footer {
+      margin-top: 70px;
+      padding: 24px 0;
+      border-top: 1px solid rgba(242, 223, 189, 0.25);
+      background: rgba(38, 17, 8, 0.9);
+      text-align: left;
+      color: #d5bb8e;
     }
 
     @media (max-width: 860px) {
       .topbar-inner,
-      .section-head {
-        align-items: stretch;
+      .hero-grid,
+      .section-head,
+      .grid,
+      .audio-grid,
+      .image-grid,
+      .dossier-grid,
+      .file-list {
+        grid-template-columns: 1fr;
       }
 
-      .status-card,
+      .topbar-inner {
+        display: grid;
+      }
+
+      nav {
+        justify-content: flex-start;
+        text-align: left;
+      }
+
+      .status-card {
+        text-align: left;
+      }
+
+      .status-card img {
+        margin-left: 0;
+      }
+
       .status-list strong {
         text-align: left;
       }
 
-      .status-card-inner {
-        justify-items: start;
+      .file-list li:nth-child(odd) {
+        border-right: 0;
       }
     }
 
@@ -124,11 +392,6 @@
         width: calc(100% - 24px);
         margin-left: 12px;
       }
-
-      nav {
-        justify-content: flex-start;
-        text-align: left;
-      }
     }
   </style>
 </head>
@@ -136,18 +399,15 @@
 <body>
   <header class="topbar">
     <div class="shell topbar-inner">
-      <a class="brand" href="#home" aria-label="Return to archive home">
-        <span class="brand-mark" aria-hidden="true">
-          <img src="./civilian%20icon.png" alt="" />
-        </span>
-
+      <a class="brand" href="#home">
+        <img src="./civilian%20icon.png" alt="S.O.L.E.M. civilian icon" />
         <span>
           <p class="brand-title">S.O.L.E.M.</p>
           <p class="brand-subtitle">Civilian Continuity Archive // Ghostwire Terminal</p>
         </span>
       </a>
 
-      <nav aria-label="Archive navigation">
+      <nav>
         <a href="#status">Status</a>
         <a href="#files">Files</a>
         <a href="#dossier">Dossier</a>
@@ -158,20 +418,10 @@
   </header>
 
   <main id="home">
-    <section class="hero shell" aria-labelledby="site-title">
+    <section class="hero shell">
       <div class="hero-grid">
         <div>
-          <div class="eyebrow" aria-label="Archive status badges">
-            <span class="chip"><span class="pulse" aria-hidden="true"></span> Archive Shell Active</span>
-            <span class="chip">Civilian Content Only</span>
-            <span class="chip">Observation Layer Open</span>
-          </div>
-
-          <h1 id="site-title">
-            <span class="gradient-text">Civilian</span><br />
-            Continuity<br />
-            Archive
-          </h1>
+          <h1><span class="accent">Civilian</span><br />Continuity<br />Archive</h1>
 
           <p class="lead">
             A civilian-facing landing page for S.O.L.E.M. archive material:
@@ -181,23 +431,19 @@
 
           <div class="button-row">
             <a class="button primary" href="#dossier">Open Dossier</a>
-            <a class="button secondary" href="#audio">Play Audio Loop</a>
+            <a class="button" href="#audio">Play Audio Loop</a>
           </div>
         </div>
 
-        <aside class="status-card" aria-label="Archive status summary">
-          <div class="status-card-inner">
-            <div class="sun-seal">
-              <img src="./gold%20icon.png" alt="Gold S.O.L.E.M. icon" />
-            </div>
+        <aside class="status-card">
+          <img src="./civilian%20icon.png" alt="S.O.L.E.M. civilian icon" />
 
-            <ul class="status-list">
-              <li><span>Interface</span><strong>Active</strong></li>
-              <li><span>Access Layer</span><strong>Civilian</strong></li>
-              <li><span>Archive Mode</span><strong>Continuity</strong></li>
-              <li><span>Last Updated</span><strong>2026-06-28</strong></li>
-            </ul>
-          </div>
+          <ul class="status-list">
+            <li><span>Interface</span><strong>Active</strong></li>
+            <li><span>Access Layer</span><strong>Civilian</strong></li>
+            <li><span>Archive Mode</span><strong>Continuity</strong></li>
+            <li><span>Last Updated</span><strong class="date">2026-06-28</strong></li>
+          </ul>
         </aside>
       </div>
     </section>
@@ -205,9 +451,7 @@
     <section id="status" class="shell">
       <div class="section-head">
         <h2>Status</h2>
-        <p class="section-note">
-          One static page. Direct links. Readable archive sections. No hidden access flow.
-        </p>
+        <p class="section-note">One static page. Direct links. Readable archive sections. No centered text.</p>
       </div>
 
       <div class="grid">
@@ -231,9 +475,7 @@
     <section id="files" class="shell">
       <div class="section-head">
         <h2>Files</h2>
-        <p class="section-note">
-          Direct civilian-facing archive files currently placed in this repository.
-        </p>
+        <p class="section-note">Direct civilian-facing archive files currently placed in this folder.</p>
       </div>
 
       <ul class="file-list">
@@ -246,7 +488,7 @@
         <li><a href="./civilian%201.png">civilian 1.png</a></li>
         <li><a href="./civilian%202.png">civilian 2.png</a></li>
         <li><a href="./civilian%20icon.png">civilian icon.png</a></li>
-        <li><a href="./gold%20icon.png">gold icon.png</a></li>
+        <li><a href="./1900s.png">1900s.png</a></li>
         <li><a href="./1900s%202.png">1900s 2.png</a></li>
         <li><a href="./BOOT.wav">BOOT.wav</a></li>
         <li><a href="./DSYNC.mp3">DSYNC.mp3</a></li>
@@ -256,38 +498,36 @@
     <section id="dossier" class="shell">
       <div class="section-head">
         <h2>Civilian Dossier</h2>
-        <p class="section-note">
-          Displayed as direct archive images. No simulated login. No clearance ladder. Just the civilian record.
-        </p>
+        <p class="section-note">Displayed as direct archive images.</p>
       </div>
 
       <div class="dossier-grid">
-        <article class="dossier-page">
+        <article class="image-card">
           <img src="./CIVILIAN_DOSSIER_Page_1.jpg" alt="Civilian dossier page 1" />
           <div class="caption">Civilian Dossier // Page 1</div>
         </article>
 
-        <article class="dossier-page">
+        <article class="image-card">
           <img src="./CIVILIAN_DOSSIER_Page_2.jpg" alt="Civilian dossier page 2" />
           <div class="caption">Civilian Dossier // Page 2</div>
         </article>
 
-        <article class="dossier-page">
+        <article class="image-card">
           <img src="./CIVILIAN_DOSSIER_Page_3.jpg" alt="Civilian dossier page 3" />
           <div class="caption">Civilian Dossier // Page 3</div>
         </article>
 
-        <article class="dossier-page">
+        <article class="image-card">
           <img src="./CIVILIAN_DOSSIER_Page_4.jpg" alt="Civilian dossier page 4" />
           <div class="caption">Civilian Dossier // Page 4</div>
         </article>
 
-        <article class="dossier-page">
+        <article class="image-card">
           <img src="./CIVILIAN_DOSSIER_Page_5.jpg" alt="Civilian dossier page 5" />
           <div class="caption">Civilian Dossier // Page 5</div>
         </article>
 
-        <article class="dossier-page">
+        <article class="image-card">
           <img src="./CIVILIAN_DOSSIER_Page_6.jpg" alt="Civilian dossier page 6" />
           <div class="caption">Civilian Dossier // Page 6</div>
         </article>
@@ -297,38 +537,28 @@
     <section id="images" class="shell">
       <div class="section-head">
         <h2>Images</h2>
-        <p class="section-note">
-          Current civilian graphics and icons available as direct image assets.
-        </p>
+        <p class="section-note">Current civilian graphics and icons available as direct image assets.</p>
       </div>
 
-      <div class="asset-grid">
-        <article class="asset-card">
-          <div class="image-wrap">
-            <img src="./civilian%201.png" alt="Civilian graphic asset 1" />
-          </div>
+      <div class="image-grid">
+        <article class="image-card">
+          <img src="./civilian%201.png" alt="Civilian graphic asset 1" />
           <div class="caption">civilian 1.png</div>
         </article>
 
-        <article class="asset-card">
-          <div class="image-wrap">
-            <img src="./civilian%202.png" alt="Civilian graphic asset 2" />
-          </div>
+        <article class="image-card">
+          <img src="./civilian%202.png" alt="Civilian graphic asset 2" />
           <div class="caption">civilian 2.png</div>
         </article>
 
-        <article class="asset-card">
-          <div class="image-wrap">
-            <img src="./civilian%20icon.png" alt="Civilian icon" />
-          </div>
-          <div class="caption">civilian icon.png</div>
+        <article class="image-card">
+          <img src="./1900s.png" alt="1900s graphic asset" />
+          <div class="caption">1900s.png</div>
         </article>
 
-        <article class="asset-card">
-          <div class="image-wrap">
-            <img src="./gold%20icon.png" alt="Gold icon" />
-          </div>
-          <div class="caption">gold icon.png</div>
+        <article class="image-card">
+          <img src="./civilian%20icon.png" alt="Civilian icon" />
+          <div class="caption">civilian icon.png</div>
         </article>
       </div>
     </section>
@@ -336,9 +566,7 @@
     <section id="audio" class="shell">
       <div class="section-head">
         <h2>Audio</h2>
-        <p class="section-note">
-          Ghostwire audio access remains direct and browser-native.
-        </p>
+        <p class="section-note">Ghostwire audio access remains direct and browser-native.</p>
       </div>
 
       <div class="audio-grid">
@@ -356,7 +584,7 @@
       </div>
     </section>
 
-    <section class="shell" aria-label="Archive note">
+    <section class="shell">
       <div class="archive-note">
         <strong>Archive note:</strong>
         This layer is intentionally civilian-facing. It preserves the visible materials without exposing internal systems,
@@ -367,7 +595,8 @@
 
   <footer>
     <div class="shell">
-      S.O.L.E.M. Civilian Continuity Archive // Ghostwire Terminal // Because Memory Is a Choice // Updated 2026-06-28
+      <strong>S.O.L.E.M. Civilian Continuity Archive</strong> // Ghostwire Terminal // Updated
+      <span class="date">2026-06-28</span>
     </div>
   </footer>
 </body>
